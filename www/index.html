@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <meta name="application-name" content="ISwapPro Shopping Master">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="description" content="ISwapPro Shopping Master — organise shopping lists for groceries, business items, household goods, electronics, tools and more.">
+  <title>ISwapPro Shopping Master V25</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{color-scheme:light;--bg:#f3f5f9;--surface:#fff;--surface-2:#f7f8fc;--ink:#172033;--muted:#758096;--line:#e6e9f0;--brand:#6558e8;--brand-2:#8d7bff;--teal:#18a999;--orange:#f0a34a;--red:#dc5d68;--shadow:0 14px 40px rgba(29,40,70,.07);--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.5;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(101,88,232,.25);outline-offset:2px}.app-shell{max-width:1180px;margin:auto;padding:24px 28px 30px}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}.brand-mark{width:43px;height:43px;border-radius:14px;background:linear-gradient(140deg,#282d48,#7567ed);display:grid;place-items:center;color:white;font:800 22px Manrope;box-shadow:0 8px 18px #6558e83d}.brand strong,.brand small{display:block}.brand strong{font:800 16px Manrope;letter-spacing:-.4px}.brand small{font-size:9px;letter-spacing:1.5px;color:var(--muted);margin-top:2px}.top-actions{display:flex;gap:9px}.icon-btn{width:42px;height:42px;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--ink);font-size:20px;box-shadow:0 4px 14px #1b27400a}.tabs{display:flex;gap:6px;padding:6px;background:#e9ebf2;border-radius:15px;width:max-content;max-width:100%;margin-bottom:25px;overflow:auto}.tab{border:0;background:transparent;color:#727b90;padding:10px 18px;border-radius:11px;font-weight:700;font-size:13px;white-space:nowrap}.tab.active{background:var(--surface);color:var(--ink);box-shadow:0 3px 12px #1c254012}.nav-count{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;background:#efedff;color:var(--brand);border-radius:20px;font-size:10px;margin-left:4px}.view{display:none;animation:rise .25s ease}.view.active{display:block}@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}.hero{min-height:260px;border-radius:26px;padding:36px 42px;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative;background:radial-gradient(circle at 82% 40%,#9389ff55,transparent 27%),linear-gradient(115deg,#202944,#34315f 58%,#5146a5);color:white;box-shadow:0 18px 45px #302d6840}.hero:after{content:"";position:absolute;width:330px;height:330px;border:1px solid #ffffff20;border-radius:50%;right:5%;top:-95px;box-shadow:0 0 0 32px #ffffff08,0 0 0 66px #ffffff06}.eyebrow{font-size:10px;font-weight:800;letter-spacing:1.5px;color:var(--muted);display:block}.hero .eyebrow{color:#c5c2ff}.hero h1{font:800 clamp(30px,4vw,43px)/1.12 Manrope;margin:12px 0}.hero h1 em{font-style:normal;color:#bcb5ff}.hero p{color:#d2d4e6;margin:0 0 22px;font-size:14px}.primary-btn,.secondary-btn{border:0;border-radius:12px;padding:12px 17px;font-weight:800;font-size:13px;transition:.18s}.primary-btn{background:var(--brand);color:white;box-shadow:0 7px 16px #6558e83d}.primary-btn:hover{background:#5548d2;transform:translateY(-1px)}.hero .primary-btn{background:white;color:#35305e;box-shadow:none}.secondary-btn{background:var(--surface-2);border:1px solid var(--line);color:var(--ink)}.hero-orbit{width:220px;height:190px;position:relative;display:grid;place-items:center;margin-right:5%;z-index:1}.orbit-ring{width:170px;height:170px;border:1px solid #c8c5ff80;border-radius:50%;box-shadow:0 0 35px #a49bff35,inset 0 0 30px #a49bff1c}.basket{position:absolute;font-size:72px;filter:drop-shadow(0 12px 10px #12142d55)}.orbit-dot{position:absolute;width:13px;height:13px;border-radius:50%;background:#9ef4e6;right:23px;top:27px;box-shadow:0 0 18px #9ef4e6}.section-heading{display:flex;align-items:end;justify-content:space-between;margin:30px 0 14px;gap:12px}.section-heading h2,.page-heading h1,.dialog-head h2{font:800 22px Manrope;margin:3px 0 0;letter-spacing:-.6px}.live-pill{font-size:10px;font-weight:800;color:#299a82;background:#e4f7f1;padding:7px 10px;border-radius:30px}.live-pill i{display:inline-block;width:6px;height:6px;background:#24b48e;border-radius:50%;margin-right:5px}.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.metric-card,.surface{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.metric-card{padding:18px 19px;min-width:0}.metric-icon{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-weight:800;margin-bottom:15px}.violet{background:#efedff;color:#695ce5}.green{background:#e3f7ef;color:#17966d}.amber{background:#fff3df;color:#d48b27}.cyan{background:#e3f7f8;color:#149da4}.metric-label{display:block;font-size:9px;font-weight:800;letter-spacing:1.2px;color:var(--muted)}.metric-card strong{display:block;font:800 27px Manrope;letter-spacing:-1px;margin:3px 0}.metric-card small{color:var(--muted);font-size:11px}.content-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:15px}.surface{padding:21px}.compact{margin:0 0 18px}.compact h2{font-size:18px}.progress-number{font:800 23px Manrope;color:var(--brand)}.progress-track{height:10px;border-radius:20px;background:#eceef5;overflow:hidden}.progress-track span{display:block;width:0;height:100%;border-radius:20px;background:linear-gradient(90deg,#6659e8,#31b9a9);transition:width .3s}.progress-foot{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:9px}.budget-box{margin-top:24px;padding:14px;background:var(--surface-2);border-radius:13px;display:flex;align-items:center;justify-content:space-between;gap:10px}.budget-box strong{display:block;font-size:13px;margin-top:3px}.text-btn{border:0;background:none;color:var(--brand);font-size:12px;font-weight:800;padding:7px 0}.action-card{padding:19px}.action-row{width:100%;display:flex;align-items:center;gap:12px;padding:13px 0;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink)}.action-row:last-child{border:0}.action-symbol{width:37px;height:37px;border-radius:12px;background:#efedff;color:var(--brand);display:grid;place-items:center;font-size:19px}.action-symbol.teal{background:#e3f7f3;color:#159c88}.action-symbol.orange{background:#fff2e3;color:#d68a2c}.action-row span:nth-child(2){flex:1}.action-row b,.action-row small{display:block}.action-row b{font-size:12px}.action-row small{font-size:10px;color:var(--muted);margin-top:2px}.arrow{color:#9aa2b3}.recent-surface{margin-top:15px}.preview-list{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.preview-item{background:var(--surface-2);padding:12px;border-radius:12px;display:flex;align-items:center;gap:9px;min-width:0}.preview-item span{font-size:20px}.preview-item b{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.preview-item small{display:block;color:var(--muted);font-size:10px}.page-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:6px 0 22px}.page-heading h1{font-size:30px}.page-heading p{font-size:13px;color:var(--muted);margin:5px 0 0}.toolbar{display:grid;grid-template-columns:minmax(180px,1fr) 170px 150px 160px;gap:9px;padding:12px;margin-bottom:16px}.search-field{display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:0 11px;color:var(--muted)}.search-field span{font-size:21px}.search-field input{width:100%;min-width:0;border:0;outline:0;background:transparent;padding:10px 0;color:var(--ink);font-size:12px}.toolbar select,.app-dialog select,.app-dialog input,.app-dialog textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);padding:10px;color:var(--ink);font-size:12px;min-width:0}.list-summary{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);margin:0 2px 10px}.item-list{display:grid;gap:9px}.grocery-item{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:13px 15px;box-shadow:0 5px 18px #17203308}.grocery-item.done{opacity:.65}.grocery-item.done .item-name{text-decoration:line-through}.item-check{width:25px;height:25px;flex:0 0 25px;border:2px solid #c8cddd;border-radius:8px;background:white;color:white;display:grid;place-items:center;font-size:15px;padding:0}.done .item-check{background:#21aa88;border-color:#21aa88}.item-emoji{width:39px;height:39px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;font-size:20px;flex:0 0 39px}.item-main{flex:1;min-width:0}.item-name{font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.item-meta{font-size:10px;color:var(--muted);margin-top:3px}.priority{font-size:9px;text-transform:uppercase;letter-spacing:.5px;font-weight:800;padding:4px 7px;border-radius:20px;background:#fff4df;color:#bd8127}.priority.high{background:#ffebed;color:#cf5963}.priority.low{background:#e9f5f3;color:#328b7b}.item-price{font-size:12px;font-weight:800;white-space:nowrap}.item-actions{display:flex;gap:5px}.qty-stepper{display:flex;align-items:center;gap:5px;flex:0 0 auto;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:3px 5px}.qty-stepper button{width:30px;height:30px;border:0;border-radius:8px;background:var(--surface);color:var(--ink);font-weight:900;font-size:17px}.qty-stepper strong{min-width:20px;text-align:center;font-size:12px}.qty-stepper small{font-size:9px;color:var(--muted)}.barcode-entry{align-items:end}.barcode-entry .scan-trigger{min-height:40px;white-space:nowrap}.mini-action{width:32px;height:32px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);color:var(--muted)}.empty-state{padding:42px 20px;text-align:center;background:var(--surface);border:1px dashed #cfd4e1;border-radius:16px;color:var(--muted);font-size:13px}.empty-state b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}.checkout-strip{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:16px}.checkout-strip strong{display:block;font:800 24px Manrope;margin:3px 0}.checkout-strip small{display:block;color:var(--muted);font-size:10px}.history-list{display:grid;gap:12px}.history-card{padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;gap:15px}.history-icon{width:43px;height:43px;border-radius:13px;background:#efedff;color:var(--brand);display:grid;place-items:center;font-size:20px}.history-main{flex:1}.history-main b{font-size:13px}.history-main small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.history-total{font-weight:800;font-size:13px}.history-actions{display:flex;gap:6px}.chart-card,.data-card{margin-top:15px}.category-chart{display:grid;gap:13px}.category-row{display:grid;grid-template-columns:110px 1fr 35px;align-items:center;gap:10px;font-size:11px}.category-track{height:9px;background:#eef0f6;border-radius:10px;overflow:hidden}.category-track span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#6b5ce7,#2bb8a5)}.category-row strong{text-align:right}.data-card p{font-size:12px;color:var(--muted)}.button-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}footer{display:flex;justify-content:space-between;gap:12px;color:#9aa2b3;font-size:9px;letter-spacing:.6px;padding:28px 2px 4px}.mobile-add{display:none}.app-dialog{width:min(490px,calc(100% - 28px));max-height:90vh;overflow:auto;border:1px solid var(--line);border-radius:20px;padding:24px;background:var(--surface);color:var(--ink);box-shadow:0 25px 90px #111a3440}.app-dialog::backdrop{background:#10182b80;backdrop-filter:blur(5px)}.dialog-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.dialog-head h2{font-size:21px}.close-btn{width:34px;height:34px;border:0;border-radius:10px;background:var(--surface-2);font-size:23px;color:var(--muted)}.app-dialog form>label,.app-dialog>label{display:block;font-size:11px;font-weight:800;color:var(--muted);margin:13px 0}.app-dialog label input,.app-dialog label select,.app-dialog label textarea{display:block;margin-top:6px;font-weight:500}.form-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dialog-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}.checkout-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.checkout-summary div{background:var(--surface-2);border-radius:12px;padding:12px}.checkout-summary span,.checkout-summary strong{display:block}.checkout-summary span{font-size:10px;color:var(--muted)}.checkout-summary strong{font:800 20px Manrope;margin-top:4px}.dialog-note{font-size:12px;color:var(--muted);margin-top:15px}.check-label{display:flex!important;align-items:center;gap:9px}.check-label input{width:auto!important;margin:0!important}.toast-region{position:fixed;z-index:10;right:20px;bottom:20px;display:grid;gap:8px}.toast{background:#202944;color:white;padding:12px 16px;border-radius:12px;font-size:12px;box-shadow:var(--shadow);animation:rise .2s ease}
+body.dark{color-scheme:dark;--bg:#0c1220;--surface:#151e30;--surface-2:#1c273b;--ink:#eef2fb;--muted:#9ba7bd;--line:#2a354b;--shadow:0 14px 40px #0003}body.dark .tabs{background:#171f31}body.dark .tab{color:#9ba7bd}body.dark .tab.active{background:#263149;color:white}body.dark .nav-count{background:#38335f;color:#c7c1ff}body.dark .progress-track,body.dark .category-track{background:#2a354b}body.dark .item-check{background:#1c273b;border-color:#536079}body.dark .done .item-check{background:#21aa88;border-color:#21aa88}body.dark .priority{background:#4b3a20;color:#f2c77d}body.dark .priority.high{background:#4b2931;color:#ff9aa3}body.dark .priority.low{background:#1e403c;color:#80d1c1}
+@media(max-width:850px){.app-shell{padding:16px 18px 25px}.metric-grid{grid-template-columns:repeat(2,1fr)}.toolbar{grid-template-columns:1fr 1fr}.search-field{grid-column:1/-1}.hero{padding:30px}.content-grid{grid-template-columns:1fr}.hero-orbit{margin-right:0}.preview-list{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.app-shell{padding:12px 13px 90px}.topbar{height:55px;margin-bottom:13px}.brand-mark{width:38px;height:38px}.icon-btn{width:38px;height:38px}.tabs{width:100%;justify-content:space-between;margin-bottom:17px}.tab{padding:9px 11px;font-size:11px}.hero{min-height:235px;padding:24px 22px;border-radius:20px}.hero h1{font-size:30px}.hero p{max-width:240px;font-size:12px}.hero-orbit{position:absolute;right:-53px;bottom:-35px;opacity:.55;transform:scale(.75)}.hero-copy{position:relative;z-index:2}.section-heading{margin-top:23px}.metric-grid{gap:9px}.metric-card{padding:14px}.metric-card strong{font-size:23px}.metric-icon{margin-bottom:10px}.surface{padding:16px}.page-heading{align-items:flex-start;flex-direction:column}.page-heading h1{font-size:27px}.page-heading .primary-btn{width:100%}.toolbar{grid-template-columns:1fr 1fr;padding:9px;gap:7px}.toolbar select{font-size:11px;padding:9px 6px}.grocery-item{gap:8px;padding:11px 9px;flex-wrap:wrap}.grocery-item .item-main{min-width:calc(100% - 110px);flex:1}.grocery-item .qty-stepper{margin-left:42px}.grocery-item .item-actions{margin-left:auto}.item-emoji{width:33px;height:33px;flex-basis:33px;font-size:17px}.item-name{font-size:12px}.item-price{font-size:11px}.item-actions{gap:3px}.qty-stepper{gap:3px;padding:2px}.qty-stepper button{width:28px;height:29px}.qty-stepper small{display:none}.mini-action{width:29px;height:29px}.priority{display:none}.checkout-strip{align-items:flex-start;flex-direction:column}.checkout-strip .primary-btn{width:100%}.history-card{gap:9px;padding:12px}.history-total{display:none}.history-actions{flex-direction:column}.preview-list{grid-template-columns:1fr}.mobile-add{display:grid;place-items:center;position:fixed;right:17px;bottom:18px;width:55px;height:55px;border:0;border-radius:18px;background:var(--brand);color:white;font-size:28px;box-shadow:0 9px 25px #6558e866;z-index:5}footer{flex-direction:column;gap:4px}.form-two{gap:8px}.app-dialog{padding:19px}.checkout-summary{grid-template-columns:1fr 1fr}.checkout-summary div:last-child{grid-column:1/-1}.toast-region{left:12px;right:12px;bottom:85px}.toast{text-align:center;justify-content:center}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.inventory-metrics{margin:0 0 16px}.inventory-toolbar{grid-template-columns:minmax(180px,1fr) 190px;margin-top:12px}.stock-quantity{font-size:13px;white-space:nowrap}.stock-badge{font-size:9px;font-weight:900;letter-spacing:.6px;padding:5px 8px;border-radius:20px;white-space:nowrap}.stock-badge.low{background:#ffebed;color:#cf5963}.stock-badge.healthy{background:#e3f7ef;color:#17966d}body.dark .stock-badge.low{background:#4b2931;color:#ff9aa3}body.dark .stock-badge.healthy{background:#1e403c;color:#80d1c1}@media(max-width:560px){.inventory-toolbar{grid-template-columns:1fr 1fr}.stock-item{flex-wrap:wrap}.stock-item .item-main{min-width:calc(100% - 60px)}.stock-item .stock-quantity{margin-left:42px}.stock-item .item-actions{margin-left:auto}}
+
+
+/* V7 separated shopping workspaces */
+.purpose-picker{margin:0 0 18px}.field-caption{font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--muted);margin:0 0 9px}.purpose-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.purpose-option{display:flex;align-items:center;gap:8px;text-align:left;min-width:0;padding:10px 8px;border:1px solid var(--line);border-radius:13px;background:var(--surface-2);color:var(--ink)}.purpose-option.active{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 10%,var(--surface));box-shadow:0 0 0 2px color-mix(in srgb,var(--brand) 16%,transparent)}.purpose-icon{width:32px;height:32px;flex:0 0 32px;border-radius:10px;background:var(--surface);display:grid;place-items:center;font-size:17px}.purpose-option b,.purpose-option small{display:block}.purpose-option b{font-size:11px}.purpose-option small{font-size:9px;color:var(--muted);line-height:1.25;margin-top:2px}.purpose-fields{display:grid;gap:2px}.purpose-fields .form-two{margin:0}.purpose-fields label{display:block;font-size:11px;font-weight:800;color:var(--muted);margin:10px 0}.purpose-fields label input,.purpose-fields label select,.purpose-fields label textarea{display:block;margin-top:6px;font-weight:500}.form-section-title{font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--brand);margin:17px 0 4px;padding-top:11px;border-top:1px solid var(--line)}.field-help{font-size:10px;color:var(--muted);margin:3px 0 8px}.app-dialog.item-dialog{width:min(560px,calc(100% - 24px));max-height:92vh}.app-dialog.item-dialog form{min-width:0}.app-dialog.item-dialog .dialog-actions{position:sticky;bottom:-1px;padding:12px 0 2px;background:var(--surface)}
+@media(max-width:560px){.supplier-fields{grid-template-columns:1fr}.purpose-options{gap:6px}.purpose-option{display:flex;flex-direction:column;align-items:flex-start;padding:9px 7px;min-height:83px}.purpose-option small{font-size:8px}.purpose-icon{width:29px;height:29px;flex-basis:29px}.app-dialog.item-dialog{padding:17px}.purpose-fields .form-two{gap:8px}}
+.list-type-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 8px}.list-type-tab{min-height:48px;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--muted);font-size:12px;font-weight:800;padding:10px 8px;display:flex;align-items:center;justify-content:center;gap:7px}.list-type-tab span{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:20px;background:var(--surface-2);font-size:10px}.list-type-tab.active{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,var(--surface));color:var(--ink);box-shadow:0 5px 16px #6558e81a}.list-type-caption{font-size:11px;color:var(--muted);margin:0 2px 12px}@media(max-width:560px){.list-type-switch{gap:5px}.list-type-tab{font-size:10px;min-height:54px;flex-direction:column;gap:3px;padding:7px 3px}.list-type-tab span{min-width:19px;height:19px}}
+
+.business-panel{margin-top:18px}.business-metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin:12px 0 22px}.business-panel[hidden]{display:none}.stock-pricing-fields{padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);margin:10px 0}.stock-pricing-line{flex-basis:100%;font-size:10px;color:var(--muted);padding-left:52px;margin-top:-4px}.sale-action{font-size:10px;font-weight:800;color:var(--brand)}
+@media(max-width:760px){.business-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.stock-pricing-line{padding-left:0}.stock-item{flex-wrap:wrap}.stock-item .item-main{min-width:calc(100% - 110px)}}
+
+.sale-reversed{opacity:.62}.sale-reversed .history-main b{text-decoration:line-through}.reverse-sale{flex:0 0 32px;color:var(--red)}
+@media(max-width:560px){.business-panel .section-heading{align-items:flex-start;flex-direction:column}.business-panel .section-heading .secondary-btn{width:100%}.history-card .reverse-sale{margin-left:auto}}
+
+.procurement-divider{height:1px;background:var(--line);margin:24px 0}.procurement-metrics{grid-template-columns:repeat(2,minmax(0,1fr));margin:10px 0 18px}.po-status{font-size:9px;letter-spacing:.7px}.po-status.draft{color:#c08a35}.po-status.ordered{color:var(--brand)}.po-status.received{color:#159b79}.po-status.cancelled{color:var(--red)}.po-actions{display:flex;gap:5px;align-items:center}.po-receive{color:#159b79}.po-received{opacity:.78}.supplier-card .history-main small{line-height:1.5}.procurement-metrics .metric-card strong{font-size:22px}@media(max-width:560px){.business-panel .section-heading.compact{align-items:flex-start;flex-direction:column}.business-panel .section-heading.compact button{width:100%}.po-card{align-items:flex-start;flex-wrap:wrap}.po-card .history-main{min-width:calc(100% - 65px)}.po-actions{margin-left:auto}.procurement-metrics{grid-template-columns:1fr 1fr}}
+
+.report-tabs{display:flex;gap:7px;overflow-x:auto;padding:5px 0 12px}.report-tab{flex:0 0 auto;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--muted);padding:10px 14px;font-size:11px;font-weight:800;min-height:42px}.report-tab.active{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,var(--surface));color:var(--ink)}.purpose-note{font-size:11px;color:var(--muted);margin:0 0 14px}.report-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.purpose-comparison{display:grid;gap:12px}.purpose-comparison-row{display:grid;grid-template-columns:minmax(90px,1fr) auto;gap:4px 10px;align-items:center;font-size:11px}.purpose-comparison-row strong{text-align:right}.purpose-comparison-row small{grid-column:1/-1;color:var(--muted);font-size:10px}.purpose-comparison-track{grid-column:1/-1;height:7px;border-radius:10px;background:var(--surface-2);overflow:hidden}.purpose-comparison-track span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--brand),var(--teal))}@media(max-width:560px){.report-grid{grid-template-columns:1fr}.report-tab{padding:9px 11px;font-size:10px}}
+.stock-photo{width:48px;height:48px;object-fit:cover;border-radius:12px;border:1px solid var(--line);flex:0 0 48px}.stock-photo-preview img{width:74px;height:74px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}.stock-photo-preview{display:flex;align-items:center;gap:12px;padding:8px;background:var(--surface-2);border-radius:12px}.scan-trigger{align-self:end;min-height:42px}.barcode-scanner{padding:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px}.barcode-scanner video{display:block;width:auto;max-width:100%;height:auto;max-height:360px;margin:0 auto;object-fit:contain;aspect-ratio:auto;background:#080d18;border-radius:10px;touch-action:pan-y}.movement-panel{margin-top:18px}.movement-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.movement-row:last-child{border:0}.movement-symbol{width:34px;height:34px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;font-weight:800}.movement-main{flex:1;min-width:0}.movement-main b,.movement-main small{display:block}.movement-main b{font-size:12px}.movement-main small{font-size:10px;color:var(--muted)}.movement-delta{font-weight:800;font-size:12px;white-space:nowrap}.movement-delta.in{color:#15966e}.movement-delta.out{color:#d45c67}.barcode-tag{display:inline-block;font-size:9px;color:var(--muted);border:1px solid var(--line);padding:2px 6px;border-radius:20px;margin-top:4px}.stock-item{flex-wrap:wrap}.stock-item .item-main{min-width:100px}@media(max-width:600px){.stock-photo{width:42px;height:42px;flex-basis:42px}.movement-row{gap:8px}.movement-panel{padding:14px}.scan-trigger{font-size:11px;padding:10px 8px}}
+/* V16 product intelligence */
+.intelligence-panel{margin:12px 0 16px}.intelligence-panel .section-heading{align-items:center}.intelligence-panel .section-heading .primary-btn{white-space:nowrap}.intelligence-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}.intelligence-metrics>div{padding:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;min-width:0}.intelligence-metrics span,.intelligence-metrics strong{display:block}.intelligence-metrics span{font-size:10px;color:var(--muted)}.intelligence-metrics strong{font:800 18px Manrope;margin-top:4px;overflow-wrap:anywhere}.reorder-queue{display:grid;gap:7px}.reorder-row{display:flex;align-items:center;gap:10px;padding:10px 11px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}.reorder-row>div{flex:1;min-width:0}.reorder-row b,.reorder-row small{display:block}.reorder-row b{font-size:12px}.reorder-row small{font-size:10px;color:var(--muted);margin-top:2px}.reorder-row>strong{font-size:11px;white-space:nowrap;color:var(--red)}.reorder-row .secondary-btn{padding:8px 10px;font-size:10px;white-space:nowrap}.intelligence-clear{padding:14px;border-radius:12px;background:var(--surface-2);color:var(--teal);font-size:12px;font-weight:700}.barcode-audit{padding:10px 12px;border-radius:10px;background:#fff1df;color:#985c16;font-size:11px;margin:10px 0 0}body.dark .barcode-audit{background:#49351f;color:#ffd18b}#addAllRestock:disabled{opacity:.45;cursor:not-allowed}@media(max-width:560px){.intelligence-panel .section-heading{align-items:stretch;flex-direction:column}.intelligence-panel .section-heading .primary-btn{width:100%}.intelligence-metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.intelligence-metrics>div{padding:9px}.intelligence-metrics strong{font-size:15px}.reorder-row{flex-wrap:wrap}.reorder-row>div{min-width:calc(100% - 70px)}.reorder-row .secondary-btn{margin-left:auto}}
+
+
+/* V25 — universal purchasing scope and Android-first refinements */
+/* Purchasing categories remain visible. Business administration stays outside Shopping Master. */
+.legacy-business-tab,#view-business,#businessPanel{display:none!important}
+.purpose-picker .field-caption{font-size:10px;letter-spacing:1px}
+.list-type-switch{display:grid!important}
+.inventory-purpose-tabs{display:flex!important}
+.purpose-picker .purpose-options{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.purpose-picker .purpose-option{display:flex!important}
+#stockType option{display:block}
+#view-insights .report-tabs{display:flex!important}
+#view-insights .report-grid{grid-template-columns:1.1fr .9fr!important}
+#view-insights .report-grid>.chart-card:nth-child(2){display:block!important}
+.mobile-add{z-index:30;bottom:calc(18px + env(safe-area-inset-bottom));right:18px}
+.app-shell{padding-bottom:calc(36px + env(safe-area-inset-bottom))}
+.grocery-item{min-width:0;overflow:hidden}
+.stock-item{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px 12px;align-items:center}
+.stock-item .item-emoji{grid-column:1;grid-row:1 / span 2}
+.stock-item .item-main{grid-column:2;grid-row:1 / span 2;min-width:0}
+.stock-item .stock-quantity{grid-column:3;grid-row:1;justify-self:end;font-size:clamp(12px,3.4vw,16px)}
+.stock-item .stock-badge{grid-column:3;grid-row:2;justify-self:end}
+.stock-item .item-actions{grid-column:2 / 4;grid-row:3;justify-content:flex-end;gap:7px}
+.stock-item .mini-action{width:42px;height:42px;border-radius:13px;font-size:16px}
+.item-meta{overflow-wrap:anywhere;line-height:1.45}
+@media(max-width:560px){
+ .app-shell{padding:12px 14px calc(150px + env(safe-area-inset-bottom))}
+ .topbar{height:auto;min-height:58px;margin-bottom:14px}
+ .brand{gap:9px}.brand strong{font-size:14px}.brand small{font-size:8px}
+ .tabs{width:100%;margin-bottom:17px;padding:5px;gap:4px}
+ .tab{padding:10px 13px;font-size:12px}
+ .page-heading{align-items:flex-start;margin:5px 0 17px}
+ .page-heading h1{font-size:25px}
+ .page-heading .primary-btn{padding:10px 11px;font-size:11px;white-space:nowrap}
+ .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .metric-card{padding:15px 14px}.metric-card strong{font-size:24px}
+ .surface{padding:16px;border-radius:20px}
+ .toolbar{grid-template-columns:1fr 1fr;padding:10px;gap:8px}
+ .toolbar .search-field{grid-column:1/-1}
+ .intelligence-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .stock-item{padding:14px 12px;grid-template-columns:42px minmax(0,1fr) auto;gap:9px}
+ .stock-item .item-name{font-size:13px;white-space:normal;overflow-wrap:anywhere}
+ .stock-item .item-meta{font-size:10px}
+ .stock-item .stock-badge{font-size:8px;padding:5px 7px}
+ .stock-item .item-actions{grid-column:1/-1;margin:2px 0 0;justify-content:flex-end}
+ .stock-item .mini-action{width:40px;height:40px}
+ .intelligence-panel .section-heading{align-items:stretch;flex-direction:column}
+ .intelligence-panel .section-heading .primary-btn{width:100%}
+ .mobile-add{width:62px;height:62px;right:17px;bottom:calc(88px + env(safe-area-inset-bottom));z-index:20}
+ .list-type-switch{gap:5px}.list-type-tab{font-size:10px;min-height:54px;flex-direction:column;gap:3px;padding:7px 3px}
+ .list-type-tab span{min-width:19px;height:19px}
+ .purpose-picker .purpose-options{grid-template-columns:1fr!important}
+}
+@media(max-width:370px){.stock-item{grid-template-columns:38px minmax(0,1fr)}.stock-item .stock-quantity{grid-column:2;grid-row:3;justify-self:start}.stock-item .stock-badge{grid-column:2;grid-row:4;justify-self:start}.stock-item .item-actions{grid-column:1/-1;grid-row:5}.metric-card strong{font-size:21px}}
+
+/* V22 mobile viewport and floating action clearance */
+@media(max-width:560px){
+ .app-shell{padding-bottom:calc(150px + env(safe-area-inset-bottom))!important}
+ .mobile-add{bottom:calc(88px + env(safe-area-inset-bottom))!important;right:17px;z-index:20}
+ .qty-stepper strong{min-width:30px;font-variant-numeric:tabular-nums}
+}
+
+/* V26 barcode scanner controls */
+.scanner-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.barcode-scanner video{display:block;width:auto;max-width:100%;height:auto;max-height:360px;margin:0 auto;object-fit:contain;aspect-ratio:auto;background:#080d18;border-radius:10px;touch-action:pan-y}
+
+/* V28 camera preview: preserve the native sensor aspect ratio on portrait Android devices. */
+.barcode-scanner{overflow:hidden}.barcode-scanner video{min-height:160px;max-height:360px}.scanner-zoom{display:flex;align-items:center;gap:10px;flex:1;min-width:150px;font-size:12px;color:var(--muted)}.scanner-zoom input{width:100%;accent-color:var(--accent)}
+
+</style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#dashboard" aria-label="ISwapPro Shopping Master home">
+        <span class="brand-mark">M</span>
+        <span><strong>ISwapPro Shopping Master</strong><small>UNIVERSAL SHOPPING ASSISTANT</small></span>
+      </a>
+      <div class="top-actions">
+        <button class="icon-btn" id="searchFocus" aria-label="Focus search" title="Search">⌕</button>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">☼</button>
+        <button class="icon-btn" id="settingsOpen" aria-label="Open settings" title="Settings">⚙</button>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="Main navigation">
+      <button class="tab active" data-view="dashboard">Overview</button>
+      <button class="tab" data-view="shopping">Shopping <span id="navCount" class="nav-count">0</span></button>
+      <button class="tab" data-view="inventory">Inventory</button>
+      <button class="tab legacy-business-tab" data-view="business" hidden>Business</button>
+      <button class="tab" data-view="history">History</button>
+      <button class="tab" data-view="insights">Insights</button>
+    </nav>
+
+    <main>
+      <section class="view active" id="view-dashboard">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">ALL YOUR PURCHASES, ORGANIZED</span>
+            <h1>Shop smarter.<br><em>Spend with purpose.</em></h1>
+            <p id="welcomeLine">Your universal shopping assistant is ready.</p>
+            <button class="primary-btn" id="heroAdd">＋ Add item</button>
+          </div>
+          <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="basket">🛒</div><span class="orbit-dot"></span></div>
+        </div>
+
+        <div class="section-heading"><div><span class="eyebrow">LIVE OVERVIEW</span><h2>Shopping snapshot</h2></div><span class="live-pill"><i></i> LOCAL DATA</span></div>
+        <div class="metric-grid">
+          <article class="metric-card"><span class="metric-icon violet">▤</span><span class="metric-label">LIST ITEMS</span><strong id="metricTotal">0</strong><small>In your active list</small></article>
+          <article class="metric-card"><span class="metric-icon green">✓</span><span class="metric-label">COLLECTED</span><strong id="metricBought">0</strong><small>Items checked off</small></article>
+          <article class="metric-card"><span class="metric-icon amber">◷</span><span class="metric-label">TO COLLECT</span><strong id="metricLeft">0</strong><small>Still on your list</small></article>
+          <article class="metric-card"><span class="metric-icon cyan">R</span><span class="metric-label">EST. TOTAL</span><strong id="metricCost">R0.00</strong><small>Based on item prices</small></article>
+        </div>
+
+        <div class="content-grid">
+          <article class="surface progress-card">
+            <div class="section-heading compact"><div><span class="eyebrow">SHOPPING PROGRESS</span><h2>List completion</h2></div><strong class="progress-number" id="progressPercent">0%</strong></div>
+            <div class="progress-track"><span id="progressFill"></span></div>
+            <div class="progress-foot"><span id="progressBought">0 collected</span><span id="progressRemaining">0 remaining</span></div>
+            <div class="budget-box"><div><span class="eyebrow">BUDGET TRACKER</span><strong id="budgetStatus">No budget set</strong></div><button class="text-btn" id="setBudget">Set budget →</button></div>
+          </article>
+          <article class="surface action-card">
+            <span class="eyebrow">QUICK ACTIONS</span>
+            <button class="action-row" id="quickNew"><span class="action-symbol">＋</span><span><b>Create shopping list</b><small>Add items and quantities</small></span><span class="arrow">↗</span></button>
+            <button class="action-row" id="quickShop"><span class="action-symbol teal">✓</span><span><b>Continue shopping</b><small>Check off items as you go</small></span><span class="arrow">↗</span></button>
+            <button class="action-row" id="quickCheckout"><span class="action-symbol orange">▣</span><span><b>Review checkout</b><small>See your estimated spend</small></span><span class="arrow">↗</span></button>
+          </article>
+        </div>
+        <article class="surface recent-surface">
+          <div class="section-heading compact"><div><span class="eyebrow">ACTIVE LIST</span><h2>Next on your list</h2></div><button class="text-btn" data-goto="shopping">View all →</button></div>
+          <div id="dashboardPreview" class="preview-list"></div>
+        </article>
+      </section>
+
+      <section class="view" id="view-shopping">
+        <div class="page-heading"><div><span class="eyebrow">YOUR PURCHASE LIST</span><h1>Shopping list</h1><p>Keep track of every item, one tap at a time.</p></div><button class="primary-btn" id="addItemTop">＋ Add item</button></div>
+        <div class="list-type-switch" role="tablist" aria-label="Shopping list type">
+          <button type="button" class="list-type-tab active" data-list-type="grocery" role="tab" aria-selected="true">🛒 General Shopping <span id="count-grocery">0</span></button>
+          <button type="button" class="list-type-tab" data-list-type="stock" role="tab" aria-selected="false">📦 Business Items <span id="count-stock">0</span></button>
+          <button type="button" class="list-type-tab" data-list-type="material" role="tab" aria-selected="false">🧰 Tools & Project Items <span id="count-material">0</span></button>
+        </div>
+        <div class="list-type-caption" id="listTypeCaption">Household groceries and essentials</div>
+        <div class="toolbar surface">
+          <label class="search-field"><span>⌕</span><input id="searchInput" type="search" placeholder="Search name, category or notes…" aria-label="Search shopping items"></label>
+          <select id="categoryFilter" aria-label="Filter by category"><option value="all">All categories</option></select>
+          <select id="statusFilter" aria-label="Filter by purchase status"><option value="all">All items</option><option value="remaining">To collect</option><option value="bought">Collected</option></select>
+          <select id="sortSelect" aria-label="Sort items"><option value="priority">Priority</option><option value="name">Name A–Z</option><option value="category">Category</option><option value="recent">Recently added</option><option value="price">Price: high to low</option></select>
+        </div>
+        <div class="list-summary"><span id="listSummary">0 items</span><button class="text-btn" id="clearCollected">Remove collected items</button></div>
+        <div id="itemList" class="item-list"></div>
+        <div class="checkout-strip surface"><div><span class="eyebrow">ESTIMATED LIST VALUE</span><strong id="listTotal">R0.00</strong><small id="listCostNote">Add item prices to calculate your total.</small></div><button class="primary-btn" id="goCheckout">Review checkout →</button></div>
+      </section>
+
+      <section class="view" id="view-inventory">
+        <div class="page-heading"><div><span class="eyebrow">PURCHASE INVENTORY</span><h1 id="inventoryHeading">Household inventory</h1><p>Track groceries and household essentials you already have.</p></div><button class="primary-btn" id="addStockTop">＋ Add household item</button></div>
+        <div class="purpose-tabs inventory-purpose-tabs" role="group" aria-label="Inventory type">
+          <button type="button" class="purpose-tab active" data-inventory-type="grocery">🛒 Groceries</button>
+          <button type="button" class="purpose-tab" data-inventory-type="stock">📦 Business Stock</button>
+          <button type="button" class="purpose-tab" data-inventory-type="material">🧰 Service Materials</button>
+        </div><p id="inventoryPurposeNote" class="purpose-note">Household groceries and essentials</p>
+        <div class="metric-grid inventory-metrics">
+          <article class="metric-card"><span class="metric-icon violet">▤</span><span class="metric-label">STOCK ITEMS</span><strong id="stockCount">0</strong><small>Tracked products</small></article>
+          <article class="metric-card"><span class="metric-icon amber">!</span><span class="metric-label">LOW STOCK</span><strong id="lowStockCount">0</strong><small>At or below minimum</small></article>
+          <article class="metric-card"><span class="metric-icon green">✓</span><span class="metric-label">IN STOCK</span><strong id="healthyStockCount">0</strong><small>Above minimum level</small></article>
+          <article class="metric-card"><span class="metric-icon cyan">↗</span><span class="metric-label">RESTOCK VALUE</span><strong id="restockValue">R0.00</strong><small>Estimate from shopping prices</small></article>
+        </div>
+        <section class="surface intelligence-panel" aria-labelledby="intelligenceTitle">
+          <div class="section-heading compact"><div><span class="eyebrow">SMART RESTOCK ASSISTANT</span><h2 id="intelligenceTitle">Items to restock</h2><p class="dialog-note">Suggestions based on what is running low at home. You decide what to add to your shopping list.</p></div><button type="button" class="primary-btn" id="addAllRestock">＋ Add low stock to list</button></div>
+          <div class="intelligence-metrics">
+            <div><span>On-hand units</span><strong id="intelUnits">0</strong></div>
+            <div><span>Inventory cost value</span><strong id="intelValue">R0.00</strong></div>
+            <div><span>Reorder suggestions</span><strong id="intelReorderCount">0</strong></div>
+          </div>
+          <div id="reorderQueue" class="reorder-queue"></div>
+          <p id="barcodeAudit" class="barcode-audit" hidden></p>
+        </section>
+        <div class="toolbar surface inventory-toolbar">
+          <label class="search-field"><span>⌕</span><input id="stockSearch" type="search" placeholder="Search inventory…" aria-label="Search inventory"></label>
+          <select id="stockFilter" aria-label="Filter inventory"><option value="all">All stock</option><option value="low">Low stock only</option><option value="healthy">Healthy stock</option></select>
+        </div>
+        <div id="inventoryList" class="item-list"></div>
+        <section class="surface movement-panel"><div class="section-heading compact"><div><span class="eyebrow">STOCK CHANGE HISTORY</span><h2>Stock movement history</h2><p class="dialog-note">Review changes to your household item quantities.</p></div><button type="button" class="secondary-btn" id="exportMovements">↓ Export movements</button></div><div id="movementList" class="history-list"></div></section>
+        <section id="businessPanel" class="surface business-panel" hidden>
+          <div class="section-heading compact"><div><span class="eyebrow">BUSINESS PERFORMANCE</span><h2>Resale performance</h2></div><button class="primary-btn" id="recordSaleTop">＋ Record sale</button></div>
+          <div class="metric-grid business-metrics">
+            <article class="metric-card"><span class="metric-label">STOCK VALUE AT COST</span><strong id="businessCostValue">R0.00</strong><small>Current stock quantity × cost</small></article>
+            <article class="metric-card"><span class="metric-label">POTENTIAL SALES VALUE</span><strong id="businessSalesValue">R0.00</strong><small>Current quantity × selling price</small></article>
+            <article class="metric-card"><span class="metric-label">SALES REVENUE</span><strong id="businessRevenue">R0.00</strong><small>Recorded sales</small></article>
+            <article class="metric-card"><span class="metric-label">GROSS PROFIT</span><strong id="businessProfit">R0.00</strong><small>Revenue less cost of goods sold</small></article>
+          </div>
+          <div class="section-heading compact"><div><span class="eyebrow">SALES REGISTER</span><h2>Recent sales</h2></div><button type="button" class="secondary-btn" id="exportSalesCsv">↓ Export sales</button></div>
+          <div id="salesList" class="history-list"></div>
+          <div class="procurement-divider"></div>
+          <div class="section-heading compact"><div><span class="eyebrow">SUPPLIER DIRECTORY</span><h2>Suppliers</h2></div><button type="button" class="secondary-btn" id="addSupplierBtn">＋ Add supplier</button></div>
+          <div id="supplierList" class="history-list"></div>
+          <div class="procurement-divider"></div>
+          <div class="section-heading compact"><div><span class="eyebrow">SUPPLIER PRICE INTELLIGENCE</span><h2>Compare supplier prices</h2><p class="dialog-note">Record quotes for the same product and compare unit costs before ordering.</p></div><div class="inline-actions"><button type="button" class="secondary-btn" id="exportSupplierPrices">↓ Export quotes</button><button type="button" class="secondary-btn" id="addSupplierPriceBtn">＋ Add price quote</button></div></div>
+          <div id="supplierPriceComparison" class="history-list"></div>
+          <div class="procurement-divider"></div>
+          <div class="section-heading compact"><div><span class="eyebrow">PRODUCT PERFORMANCE · V17</span><h2>Sales & stock forecast</h2><p class="dialog-note">Demand is estimated from recorded sales in the last 30 days. Products without sales history are marked as insufficient data.</p></div></div>
+          <div class="metric-grid procurement-metrics"><article class="metric-card"><span class="metric-label">UNITS SOLD · 30 DAYS</span><strong id="analyticsUnits30">0</strong><small>Non-reversed sales</small></article><article class="metric-card"><span class="metric-label">GROSS PROFIT · 30 DAYS</span><strong id="analyticsProfit30">R0.00</strong><small>Recorded gross profit</small></article></div>
+          <div id="productAnalytics" class="history-list"></div>
+          <div class="procurement-divider"></div>
+          <div class="section-heading compact"><div><span class="eyebrow">PROCUREMENT CONTROL</span><h2>Purchase orders</h2><p class="dialog-note">Draft → Ordered → Received. Receiving an order adds the quantity to business stock.</p></div><button type="button" class="primary-btn" id="createPurchaseOrderBtn">＋ Create order</button></div>
+          <div class="metric-grid procurement-metrics"><article class="metric-card"><span class="metric-label">OPEN ORDERS</span><strong id="poPendingCount">0</strong><small>Draft or placed</small></article><article class="metric-card"><span class="metric-label">OPEN ORDER VALUE</span><strong id="poOpenValue">R0.00</strong><small>Estimated supplier spend</small></article></div>
+          <div class="section-heading compact"><div><span class="eyebrow">ORDER REGISTER</span><h2>Purchase history</h2></div><button type="button" class="secondary-btn" id="exportPurchaseOrders">↓ Export orders</button></div>
+          <div id="purchaseOrderList" class="history-list"></div>
+        </section>
+      </section>
+
+      <section class="view" id="view-business" hidden>
+        <div class="page-heading"><div><span class="eyebrow">V18 · BUSINESS OPERATIONS</span><h1>Business management</h1><p>Customers, invoices, expenses and management reports. All records stay on this device.</p></div></div>
+        <div class="report-tabs" role="group" aria-label="Business report period"><button class="report-tab active" data-business-period="30">Last 30 days</button><button class="report-tab" data-business-period="7">Last 7 days</button><button class="report-tab" data-business-period="all">All time</button></div>
+        <div class="metric-grid business-metrics">
+          <article class="metric-card"><span class="metric-label">SALES REVENUE</span><strong id="bmRevenue">R0.00</strong><small>Non-reversed invoices</small></article>
+          <article class="metric-card"><span class="metric-label">COST OF GOODS SOLD</span><strong id="bmCogs">R0.00</strong><small>Recorded product cost</small></article>
+          <article class="metric-card"><span class="metric-label">GROSS PROFIT</span><strong id="bmGross">R0.00</strong><small>Revenue less product cost</small></article>
+          <article class="metric-card"><span class="metric-label">NET OPERATING RESULT</span><strong id="bmNet">R0.00</strong><small>Gross profit less recorded expenses</small></article>
+        </div>
+        <div class="business-v18-grid">
+          <section class="surface"><div class="section-heading compact"><div><span class="eyebrow">CUSTOMER DIRECTORY</span><h2>Customers</h2></div></div>
+            <form id="customerForm" class="management-form"><label>Customer / business name<input id="customerName" required maxlength="100" placeholder="Customer name"></label><div class="form-two"><label>Phone<input id="customerPhone" maxlength="40" placeholder="Phone number"></label><label>Email<input id="customerEmail" type="email" maxlength="120" placeholder="Email address"></label></div><label>Address / notes<input id="customerAddress" maxlength="180" placeholder="Optional address or notes"></label><button class="primary-btn" type="submit">＋ Save customer</button></form>
+            <div id="customerList" class="history-list"></div>
+          </section>
+          <section class="surface"><div class="section-heading compact"><div><span class="eyebrow">EXPENSE REGISTER</span><h2>Record business expense</h2></div></div>
+            <form id="expenseForm" class="management-form"><label>Description<input id="expenseDescription" required maxlength="120" placeholder="e.g. Transport, packaging"></label><div class="form-two"><label>Category<select id="expenseCategory"><option>Transport</option><option>Rent</option><option>Utilities</option><option>Packaging</option><option>Marketing</option><option>Wages</option><option>Repairs</option><option>Other</option></select></label><label>Amount<input id="expenseAmount" type="number" min="0.01" step="0.01" required placeholder="0.00"></label></div><div class="form-two"><label>Date<input id="expenseDate" type="date" required></label><label>Reference<input id="expenseReference" maxlength="60" placeholder="Receipt / reference"></label></div><button class="primary-btn" type="submit">＋ Save expense</button></form>
+            <div id="expenseList" class="history-list"></div>
+          </section>
+        </div>
+        <section class="surface invoice-panel"><div class="section-heading compact"><div><span class="eyebrow">SALES & RECEIPTS</span><h2>Create sales invoice</h2><p class="dialog-note">One product line per quick invoice. Stock is deducted only after confirmation.</p></div></div>
+          <form id="invoiceForm" class="management-form invoice-form"><div class="form-two"><label>Product<select id="invoiceProduct" required></select></label><label>Customer<select id="invoiceCustomer"><option value="">Walk-in customer</option></select></label></div><div class="form-two"><label>Quantity<input id="invoiceQty" type="number" min="1" step="any" value="1" required></label><label>Unit selling price<input id="invoicePrice" type="number" min="0" step="0.01" required></label></div><label>Payment method<select id="invoicePayment"><option>Cash</option><option>Card</option><option> EFT</option><option>Mobile payment</option><option>Other</option></select></label><p id="invoicePreview" class="invoice-preview">Select a product to preview the invoice total.</p><button class="primary-btn" type="submit">Create invoice & record sale</button></form>
+          <div class="section-heading compact"><div><span class="eyebrow">INVOICE REGISTER</span><h2>Recent invoices</h2></div><button type="button" class="secondary-btn" id="exportInvoices">↓ Export invoices</button></div><div id="invoiceList" class="history-list"></div>
+        </section>
+        <section class="surface"><div class="section-heading compact"><div><span class="eyebrow">MANAGEMENT REPORT</span><h2>Profit & loss summary</h2><p class="dialog-note">This is a management estimate from records entered in the app, not a tax or accounting statement.</p></div><button type="button" class="secondary-btn" id="exportBusinessReport">↓ Export report</button></div><div id="businessReportRows" class="business-report-rows"></div></section>
+      </section>
+
+      <section class="view" id="view-history">
+        <div class="page-heading"><div><span class="eyebrow">YOUR SHOPPING RECORD</span><h1>Purchase history</h1><p>Review completed sessions or restore a previous list.</p></div></div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+
+      <section class="view" id="view-insights">
+        <div class="page-heading"><div><span class="eyebrow">SHOPPING INSIGHTS</span><h1>Insights & reports</h1><p>Understand shopping patterns, categories and completed shopping trips.</p></div></div>
+        <div class="report-tabs" role="group" aria-label="Report purpose">
+          <button type="button" class="report-tab active" data-report-type="all">All activity</button>
+          <button type="button" class="report-tab" data-report-type="grocery">🛒 Groceries</button>
+          <button type="button" class="report-tab" data-report-type="stock">📦 Business stock</button>
+          <button type="button" class="report-tab" data-report-type="material">🧰 Service materials</button>
+        </div>
+        <p id="reportCaption" class="purpose-note">Household shopping activity only.</p>
+        <div class="metric-grid insight-metrics">
+          <article class="metric-card"><span class="metric-label">COMPLETED SESSIONS</span><strong id="insightLists">0</strong><small>Saved checkout records</small></article>
+          <article class="metric-card"><span class="metric-label">ITEMS COLLECTED</span><strong id="insightItems">0</strong><small>Items in completed sessions</small></article>
+          <article class="metric-card"><span class="metric-label">AVG. COMPLETION</span><strong id="insightAverage">0%</strong><small>Per completed session</small></article>
+          <article class="metric-card"><span class="metric-label">RECORDED SPEND</span><strong id="insightSpend">R0.00</strong><small>Based on saved item prices</small></article>
+        </div>
+        <div class="report-grid">
+          <article class="surface chart-card"><div class="section-heading compact"><div><span class="eyebrow">CATEGORY BREAKDOWN</span><h2>Collected by category</h2></div></div><div id="categoryChart" class="category-chart"></div></article>
+          <article class="surface chart-card"><div class="section-heading compact"><div><span class="eyebrow">PURPOSE SUMMARY</span><h2>Shopping summary</h2></div></div><div id="purposeComparison" class="purpose-comparison"></div></article>
+        </div>
+        <article class="surface data-card"><div class="section-heading compact"><div><span class="eyebrow">DATA MANAGEMENT</span><h2>Your data, under your control</h2></div></div><p>Export a backup before changing devices. Importing a backup replaces the data currently stored in this browser.</p><div class="button-row"><button class="secondary-btn" id="exportJson">↓ Export backup</button><button class="secondary-btn" id="importJson">↑ Import backup</button><button class="secondary-btn" id="exportCsv">⇩ Export list CSV</button><input type="file" id="importFile" accept="application/json" hidden></div></article>
+      </section>
+    </main>
+    <footer><span>ISWAPPRO SHOPPING MASTER</span><span>Private • Offline-ready • Your data stays on this device</span></footer>
+  </div>
+
+  <button class="mobile-add" id="mobileAdd" aria-label="Add a shopping item">＋</button>
+
+  <dialog id="itemDialog" class="app-dialog item-dialog">
+    <form id="itemForm" method="dialog">
+      <div class="dialog-head"><div><span class="eyebrow" id="itemEyebrow">SHOPPING DETAILS</span><h2 id="itemDialogTitle">Add an item</h2></div><button type="button" class="close-btn" data-close="itemDialog" aria-label="Close">×</button></div>
+      <input type="hidden" id="editId">
+      <section class="purpose-picker" aria-label="Choose shopping type">
+        <p class="field-caption">CHOOSE PURCHASE LIST</p>
+        <div class="purpose-options">
+          <button type="button" class="purpose-option active" data-purpose="grocery" aria-pressed="true"><span class="purpose-icon">🛒</span><span><b>General shopping</b><small>Groceries, household and personal purchases</small></span></button>
+          <button type="button" class="purpose-option" data-purpose="stock" aria-pressed="false"><span class="purpose-icon">📦</span><span><b>Business items</b><small>Products, equipment and supplies</small></span></button>
+          <button type="button" class="purpose-option" data-purpose="material" aria-pressed="false"><span class="purpose-icon">🧰</span><span><b>Tools & project items</b><small>Building, tools and project supplies</small></span></button>
+        </div>
+      </section>
+      <input type="hidden" id="itemType" value="grocery">
+      <div id="purposeFormFields"></div>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" data-close="itemDialog">Cancel</button><button class="primary-btn" type="submit">Save item</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="stockDialog" class="app-dialog">
+    <form id="stockForm" method="dialog">
+      <div class="dialog-head"><div><span class="eyebrow">PURCHASE INVENTORY</span><h2 id="stockDialogTitle">Add inventory item</h2></div><button type="button" class="close-btn" data-close="stockDialog" aria-label="Close">×</button></div>
+      <input type="hidden" id="stockEditId">
+      <label>Inventory purpose<select id="stockType"><option value="grocery">General purchases</option><option value="stock">Business purchases</option><option value="material">Tools & project purchases</option></select></label>
+      <label>Product name<input id="stockName" required maxlength="80" placeholder="e.g. Rice"></label>
+      <div class="form-two"><label>Barcode / EAN / UPC<input id="stockBarcode" maxlength="80" inputmode="numeric" placeholder="Scan or enter barcode"></label><button type="button" class="secondary-btn scan-trigger" id="scanBarcode">▦ Scan barcode</button></div>
+      <div id="barcodeScanner" class="barcode-scanner" hidden><video id="barcodeVideo" playsinline muted></video><p id="scannerStatus" class="dialog-note">Point the camera at a product barcode.</p><div class="scanner-actions"><button type="button" class="secondary-btn" id="scannerTorch" hidden>🔦 Light off</button><button type="button" class="secondary-btn" id="stopScanner">Stop camera</button></div></div>
+      <label>Product photo<input id="stockPhoto" type="file" accept="image/*" capture="environment"></label><div id="stockPhotoPreview" class="stock-photo-preview" hidden></div>
+      <div class="form-two"><label>Current quantity<input id="stockQty" type="number" min="0" max="99999" value="1" required></label><label>Unit<select id="stockUnit"><option>each</option><option>pack</option><option>kg</option><option>g</option><option>litre</option><option>ml</option><option>dozen</option><option>box</option><option>bottle</option></select></label></div>
+      <div class="form-two"><label>Minimum stock level<input id="stockMin" type="number" min="0" max="99999" value="1" required></label><label>Category<select id="stockCategory"><option>Other</option><option>Vegetables</option><option>Fruit</option><option>Dairy</option><option>Bakery</option><option>Meat & Fish</option><option>Frozen</option><option>Drinks</option><option>Pantry</option><option>Household</option><option>Personal Care</option></select></label></div>
+      <div class="form-two"><label>Store / supplier name<input id="stockStore" maxlength="100" placeholder="e.g. Makro, local supplier"></label><label>Store / supplier location<input id="stockLocation" maxlength="120" placeholder="Town, area or branch"></label></div>
+      <div id="stockPricingFields" class="stock-pricing-fields" hidden><div class="form-two"><label>Purchase cost per unit<input id="stockCost" type="number" min="0" step="0.01" placeholder="0.00"></label><label>Selling price per unit<input id="stockSell" type="number" min="0" step="0.01" placeholder="0.00"></label></div><p class="dialog-note" id="stockMarginPreview">Enter cost and selling price to calculate the expected margin.</p></div>
+      <p class="dialog-note">Low stock is flagged when current quantity is equal to or below the minimum level. Items you collect during shopping can be reflected in your household inventory.</p>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" data-close="stockDialog">Cancel</button><button class="primary-btn" type="submit">Save stock</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="saleDialog" class="app-dialog"><form id="saleForm" method="dialog"><div class="dialog-head"><div><span class="eyebrow">BUSINESS STOCK</span><h2>Record a sale</h2></div><button type="button" class="close-btn" data-close="saleDialog">×</button></div><input type="hidden" id="saleStockId"><p id="saleProductName" class="dialog-note"></p><label>Quantity sold<input id="saleQty" type="number" min="0.01" step="any" value="1" required></label><label>Selling price per unit<input id="salePrice" type="number" min="0" step="0.01" required></label><p class="dialog-note" id="salePreview">Sale total and gross profit will be calculated here.</p><div class="dialog-actions"><button type="button" class="secondary-btn" data-close="saleDialog">Cancel</button><button class="primary-btn" type="submit">Save sale</button></div></form></dialog>
+
+  <dialog id="supplierDialog" class="app-dialog"><form id="supplierForm" method="dialog"><div class="dialog-head"><div><span class="eyebrow">SUPPLIER DIRECTORY</span><h2 id="supplierDialogTitle">Add supplier</h2></div><button type="button" class="close-btn" data-close="supplierDialog" aria-label="Close">×</button></div><input type="hidden" id="supplierEditId"><label>Supplier / business name<input id="supplierName" required maxlength="100" placeholder="e.g. Wholesale supplier"></label><label>Contact person<input id="supplierContact" maxlength="100" placeholder="Contact name"></label><div class="form-two"><label>Phone<input id="supplierPhone" type="tel" maxlength="40" placeholder="Phone number"></label><label>Email<input id="supplierEmail" type="email" maxlength="120" placeholder="Email address"></label></div><label>Location<input id="supplierLocation" maxlength="140" placeholder="Town, area or address"></label><label>Notes<textarea id="supplierNotes" rows="3" maxlength="300" placeholder="Payment terms, delivery details or notes"></textarea></label><div class="dialog-actions"><button type="button" class="secondary-btn" data-close="supplierDialog">Cancel</button><button class="primary-btn" type="submit">Save supplier</button></div></form></dialog>
+  <dialog id="supplierPriceDialog" class="app-dialog"><form id="supplierPriceForm" method="dialog"><div class="dialog-head"><div><span class="eyebrow">SUPPLIER PRICE INTELLIGENCE</span><h2>Add supplier quote</h2></div><button type="button" class="close-btn" data-close="supplierPriceDialog">×</button></div><label>Product name<input id="quoteProduct" required maxlength="100" placeholder="e.g. Wireless earbuds"></label><label>Supplier<select id="quoteSupplier" required><option value="">Choose supplier</option></select></label><div class="form-two"><label>Unit cost<input id="quoteCost" type="number" min="0" step="0.01" required placeholder="0.00"></label><label>Unit<select id="quoteUnit"><option>each</option><option>pack</option><option>kg</option><option>g</option><option>litre</option><option>ml</option><option>dozen</option><option>box</option><option>bottle</option></select></label></div><label>Quote date<input id="quoteDate" type="date"></label><label>Notes<input id="quoteNotes" maxlength="200" placeholder="Delivery fee, minimum order, quote reference"></label><p class="dialog-note">Quotes are comparison records only. They do not create a purchase order or change stock.</p><div class="dialog-actions"><button type="button" class="secondary-btn" data-close="supplierPriceDialog">Cancel</button><button class="primary-btn" type="submit">Save quote</button></div></form></dialog>
+  <dialog id="purchaseOrderDialog" class="app-dialog"><form id="poForm" method="dialog"><div class="dialog-head"><div><span class="eyebrow">PROCUREMENT CONTROL</span><h2>Create purchase order</h2></div><button type="button" class="close-btn" data-close="purchaseOrderDialog" aria-label="Close">×</button></div><label>Supplier<select id="poSupplier" required><option value="">Choose supplier</option></select></label><label>Product / material name<input id="poProduct" required maxlength="100" placeholder="e.g. Wireless charger"></label><div class="form-two"><label>Quantity<input id="poQty" type="number" min="0.01" step="any" value="1" required></label><label>Unit<select id="poUnit"><option>each</option><option>pack</option><option>kg</option><option>g</option><option>litre</option><option>ml</option><option>dozen</option><option>box</option><option>bottle</option></select></label></div><label>Purchase cost per unit (ZAR / selected currency)<input id="poUnitCost" type="number" min="0" step="0.01" value="0.00" required></label><label>Expected delivery date<input id="poExpectedDate" type="date"></label><label>Order notes<textarea id="poNotes" rows="3" maxlength="300" placeholder="Quote reference, delivery instructions or notes"></textarea></label><p class="dialog-note">This creates a draft only. Mark it as ordered after sending it to the supplier. Receive it when the goods arrive.</p><div class="dialog-actions"><button type="button" class="secondary-btn" data-close="purchaseOrderDialog">Cancel</button><button class="primary-btn" type="submit">Create draft</button></div></form></dialog>
+
+  <dialog id="checkoutDialog" class="app-dialog">
+    <div class="dialog-head"><div><span class="eyebrow">FINAL REVIEW</span><h2>List checkout summary</h2></div><button class="close-btn" data-close="checkoutDialog" aria-label="Close">×</button></div>
+    <div class="checkout-summary">
+      <div><span>Collected</span><strong id="checkoutBought">0</strong></div>
+      <div><span>Still to collect</span><strong id="checkoutLeft">0</strong></div>
+      <div><span>Estimated total</span><strong id="checkoutTotal">R0.00</strong></div>
+    </div>
+    <p id="checkoutMessage" class="dialog-note"></p>
+    <div class="dialog-actions"><button class="secondary-btn" data-close="checkoutDialog">Keep shopping</button><button class="primary-btn" id="completeList">Complete list</button></div>
+  </dialog>
+
+  <dialog id="settingsDialog" class="app-dialog">
+    <div class="dialog-head"><div><span class="eyebrow">PREFERENCES</span><h2>Settings</h2></div><button class="close-btn" data-close="settingsDialog" aria-label="Close">×</button></div>
+    <label>Currency display<select id="currencySelect"><option value="ZAR">South African Rand (ZAR)</option><option value="USD">US Dollar (USD)</option><option value="GBP">British Pound (GBP)</option><option value="EUR">Euro (EUR)</option></select></label>
+    <label>Shopping budget (optional)<input id="budgetInput" type="number" min="0" step="0.01" placeholder="e.g. 1500"></label>
+    <label class="check-label"><input id="darkMode" type="checkbox"> Use dark appearance</label>
+    <p class="dialog-note">Prices are estimates entered by you. No payment is processed by this app.</p>
+    <div class="dialog-actions"><button class="secondary-btn" data-close="settingsDialog">Cancel</button><button class="primary-btn" id="saveSettings">Save settings</button></div>
+  </dialog>
+
+  <div id="toastRegion" class="toast-region" role="status" aria-live="polite"></div>
+  <script>
+
+(() => {
+  "use strict";
+  const KEY = "iswappro_shopping_cart_v1";
+  const CATS = {
+    "Vegetables":"🥬","Fruit":"🍎","Dairy":"🥛","Bakery":"🥖","Meat & Fish":"🥩",
+    "Frozen":"🧊","Drinks":"🥤","Pantry":"🥫","Household":"🧽","Personal Care":"🧴","Other":"📦"
+  };
+  const blank = {items:[],inventory:[],history:[],sales:[],suppliers:[],purchaseOrders:[],supplierPrices:[],stockMovements:[],settings:{currency:"ZAR",budget:0,dark:false},stats:{lists:0,items:0,spend:0,category:{}}};
+  const clone = x => JSON.parse(JSON.stringify(x));
+  let state = load();
+  let settingsDraft = null;
+  let filters = {search:"",category:"all",status:"all",sort:"priority"};
+  let activeListType = "grocery";
+  let activeInventoryType = "grocery";
+  const LIST_TYPE_COPY = {grocery:"Groceries, household goods, clothing, electronics, education and other personal purchases.",stock:"Products, equipment, packaging, stationery and other business purchases.",material:"Building materials, tools, supplies and project-related purchases."};
+  const TYPE_LABELS = {grocery:"General shopping",stock:"Business items",material:"Tools & project items"};
+  const TYPE_CATEGORIES = {grocery:["Groceries","Household Items","Clothing & Accessories","Electronics","Personal Care & Health","Education & Office","Other Purchases","Other"],stock:["Business Products","Equipment","Packaging","Stationery","Electronics","Tools & Equipment","Clothing & Accessories","Other"],material:["Building Materials","Electrical","Plumbing","Cleaning","Tools & Equipment","Decorating","Catering Supplies","Other"]};
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+  const uid = () => "g_" + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+  const wholeUnits = new Set(["each","item","items","piece","pieces","pack","packs","box","boxes","bottle","bottles","can","cans","pair","pairs","set","sets"]);
+  const qtyStep = unit => wholeUnits.has(String(unit||"each").toLowerCase()) ? 1 : 0.1;
+  const cleanQty = (value, unit="each", min=0) => { const n=Number(value); if(!Number.isFinite(n)) return min; const step=qtyStep(unit); const rounded=step===1?Math.round(n):Math.round(n*1000)/1000; return Math.max(min,rounded); };
+  const qtyText = (value, unit="each") => cleanQty(value,unit).toLocaleString("en-ZA",{maximumFractionDigits:3});
+  const money = n => new Intl.NumberFormat("en-ZA",{style:"currency",currency:state.settings.currency||"ZAR"}).format(Number(n)||0);
+  const date = ts => new Date(ts).toLocaleString([], {dateStyle:"medium",timeStyle:"short"});
+  function load(){
+    try { const x=JSON.parse(localStorage.getItem(KEY)||"null"); return x?{...clone(blank),...x,settings:{...blank.settings,...x.settings},stats:{...blank.stats,...x.stats},inventory:Array.isArray(x.inventory)?x.inventory:[],sales:Array.isArray(x.sales)?x.sales:[],suppliers:Array.isArray(x.suppliers)?x.suppliers:[],purchaseOrders:Array.isArray(x.purchaseOrders)?x.purchaseOrders:[],supplierPrices:Array.isArray(x.supplierPrices)?x.supplierPrices:[],stockMovements:Array.isArray(x.stockMovements)?x.stockMovements:[]}:clone(blank); }
+    catch(e){ return clone(blank); }
+  }
+  function save(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){notify("Could not save data. Export a backup and free browser storage.","error");} }
+  function logStockMovement(item,delta,reason,reference=""){state.stockMovements=Array.isArray(state.stockMovements)?state.stockMovements:[];if(!delta)return;state.stockMovements.unshift({id:uid(),date:Date.now(),inventoryId:item.id,name:item.name,type:item.type||"grocery",delta:Number(delta),unit:item.unit||"each",reason,reference});state.stockMovements=state.stockMovements.slice(0,1000);}
+  // V16: create one opening-balance audit entry for legacy inventory records
+  // that existed before V15 movement tracking. Never duplicate an existing baseline.
+  function migrateLegacyInventoryMovements(){
+    state.inventory=Array.isArray(state.inventory)?state.inventory:[];
+    state.stockMovements=Array.isArray(state.stockMovements)?state.stockMovements:[];
+    let changed=false;
+    state.inventory.forEach(item=>{
+      if(!item.id){item.id=uid();changed=true;}
+      const hasTrail=state.stockMovements.some(m=>m.inventoryId===item.id);
+      const qty=Number(item.qty)||0;
+      if(!hasTrail&&qty>0){
+        state.stockMovements.unshift({id:uid(),date:Date.now(),inventoryId:item.id,name:item.name||"Unnamed item",type:item.type||"grocery",delta:qty,unit:item.unit||"each",reason:"Opening balance (legacy inventory migration)",reference:"V16 migration"});
+        changed=true;
+      }
+    });
+    if(changed){state.stockMovements=state.stockMovements.slice(0,1000);save();}
+  }
+  migrateLegacyInventoryMovements();
+  function renderMovements(){const rows=(state.stockMovements||[]).filter(m=>(m.type||"grocery")===activeInventoryType).slice(0,40);const el=$("#movementList");if(!el)return;el.innerHTML=rows.length?rows.map(m=>`<article class="movement-row"><span class="movement-symbol">${m.delta>0?"↗":"↘"}</span><div class="movement-main"><b>${esc(m.name)}</b><small>${esc(m.reason)} · ${date(m.date)}${m.reference?" · "+esc(m.reference):""}</small></div><strong class="movement-delta ${m.delta>0?"in":"out"}">${m.delta>0?"+":""}${m.delta} ${esc(m.unit)}</strong></article>`).join(""):`<div class="empty-state">No stock movements recorded for this purpose yet.</div>`;}
+  let scannerStream=null;function stopBarcodeScanner(){if(scannerStream){scannerStream.getTracks().forEach(t=>t.stop());scannerStream=null;}const v=$("#barcodeVideo");if(v)v.srcObject=null;$("#barcodeScanner").hidden=true;}
+
+  function notify(msg,type="ok"){const n=document.createElement("div");n.className="toast";n.textContent=msg;$("#toastRegion").append(n);setTimeout(()=>n.remove(),3000);}
+  function openDialog(id){const d=$("#"+id);if(d.showModal)d.showModal();else d.setAttribute("open","");}
+  function closeDialog(id){
+    if(id==="stockDialog")stopBarcodeScanner();
+    if(id==="settingsDialog" && settingsDraft){
+      state.settings={...settingsDraft};
+      settingsDraft=null;
+      applyTheme();
+    }
+    const d=$("#"+id);if(d.close)d.close();else d.removeAttribute("open");
+  }
+  function navigate(view){$$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+view));$$(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===view));renderAll();window.scrollTo({top:0,behavior:"smooth"});}
+  function totalCost(items=state.items){return items.reduce((s,i)=>s+(Number(i.price)||0)*(Number(i.qty)||1),0);}
+  function bought(){return state.items.filter(i=>i.done);}
+  function remaining(){return state.items.filter(i=>!i.done);}
+  function applyTheme(){document.body.classList.toggle("dark",!!state.settings.dark);$("#darkMode").checked=!!state.settings.dark;$("#themeToggle").textContent=state.settings.dark?"☾":"☼";}
+  function renderDashboard(){
+    const total=state.items.length,done=bought().length,left=total-done,pct=total?Math.round(done/total*100):0,cost=totalCost();
+    $("#metricTotal").textContent=total;$("#metricBought").textContent=done;$("#metricLeft").textContent=left;$("#metricCost").textContent=money(cost);
+    $("#progressPercent").textContent=pct+"%";$("#progressFill").style.width=pct+"%";$("#progressBought").textContent=done+" collected";$("#progressRemaining").textContent=left+" remaining";
+    $("#budgetStatus").textContent=state.settings.budget>0?`${money(cost)} of ${money(state.settings.budget)}${cost>state.settings.budget?" · over budget":""}`:"No budget set";
+    $("#welcomeLine").textContent=total?`${left} item${left===1?"":"s"} left to collect. Your estimated list value is ${money(cost)}.`:"Start by adding a few items to your shopping list.";
+    $("#navCount").textContent=left;
+    const preview=state.items.filter(i=>!i.done).slice(0,3);
+    $("#dashboardPreview").innerHTML=preview.length?preview.map(i=>`<div class="preview-item"><span>${CATS[i.category]||"📦"}</span><div><b>${esc(i.name)}</b><small>Qty ${i.qty} · ${money(i.price*i.qty)}</small></div></div>`).join(""):`<div class="empty-state" style="grid-column:1/-1"><b>Your list is clear</b>Add an item to see it here.</div>`;
+  }
+  function renderCategoryOptions(){
+    const sel=$("#categoryFilter"),value=sel.value||"all";
+    const cats=TYPE_CATEGORIES[activeListType]||TYPE_CATEGORIES.grocery;
+    sel.innerHTML='<option value="all">All categories</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join("");
+    sel.value=[...sel.options].some(o=>o.value===value)?value:"all";
+  }
+  function renderItems(){
+    renderCategoryOptions();
+    const typeItems=state.items.filter(i=>(i.type||"grocery")===activeListType);
+    let items=[...typeItems];
+    if(filters.search){const q=filters.search.toLowerCase();items=items.filter(i=>[i.name,i.category,i.notes,i.store,i.location,i.sku,i.project,i.service,TYPE_LABELS[i.type||"grocery"]].join(" ").toLowerCase().includes(q));}
+    if(filters.category!=="all")items=items.filter(i=>i.category===filters.category);
+    if(filters.status==="remaining")items=items.filter(i=>!i.done);
+    if(filters.status==="bought")items=items.filter(i=>i.done);
+    const po={high:0,medium:1,low:2};
+    items.sort((a,b)=>filters.sort==="name"?a.name.localeCompare(b.name):filters.sort==="category"?a.category.localeCompare(b.category):filters.sort==="recent"?b.created-a.created:filters.sort==="price"?b.price-a.price:(po[a.priority]-po[b.priority]||a.name.localeCompare(b.name)));
+    const typeDone=typeItems.filter(i=>i.done).length,typeLeft=typeItems.length-typeDone;
+    $("#listSummary").textContent=`${items.length} shown · ${typeItems.length} ${TYPE_LABELS[activeListType].toLowerCase()} · ${typeLeft} to collect`;
+    $("#listTotal").textContent=money(totalCost(typeItems));
+    $("#listCostNote").textContent=`${typeDone} collected · ${typeLeft} still to collect`;
+    $("#listTypeCaption").textContent=LIST_TYPE_COPY[activeListType];
+    $("#count-grocery").textContent=state.items.filter(i=>(i.type||"grocery")==="grocery").length;
+    $("#count-stock").textContent=state.items.filter(i=>i.type==="stock").length;
+    $("#count-material").textContent=state.items.filter(i=>i.type==="material").length;
+    $$("[data-list-type]").forEach(b=>{const on=b.dataset.listType===activeListType;b.classList.toggle("active",on);b.setAttribute("aria-selected",String(on));});
+    $("#itemList").innerHTML=items.length?items.map(i=>`
+      <article class="grocery-item ${i.done?"done":""}" data-id="${i.id}">
+        <button class="item-check" data-action="toggle" aria-label="${i.done?"Mark as not collected":"Mark as collected"}" aria-pressed="${i.done}">${i.done?"✓":""}</button>
+        <span class="item-emoji">${CATS[i.category]||"📦"}</span>
+        <div class="item-main"><div class="item-name">${esc(i.name)}</div><div class="item-meta">${qtyText(i.qty,i.unit)} ${esc(i.unit)} · ${esc(TYPE_LABELS[i.type||"grocery"])} · ${esc(i.category)}${i.sku?" · SKU "+esc(i.sku):""}${i.project?" · Job "+esc(i.project):""}${i.store?" · "+esc(i.store):""}${i.location?" · "+esc(i.location):""}${i.notes?" · "+esc(i.notes):""}${i.barcode?" · Barcode "+esc(i.barcode):""}</div></div>
+        <div class="qty-stepper"><button type="button" data-action="qty-minus" aria-label="Decrease quantity">−</button><strong>${qtyText(i.qty,i.unit)}</strong><button type="button" data-action="qty-plus" aria-label="Increase quantity">＋</button><small>${esc(i.unit)}</small></div>
+        <span class="priority ${i.priority}">${i.priority}</span>
+        <span class="item-price">${money(i.price*i.qty)}</span>
+        <div class="item-actions"><button class="mini-action" data-action="edit" aria-label="Edit ${esc(i.name)}">✎</button><button class="mini-action" data-action="delete" aria-label="Delete ${esc(i.name)}">×</button></div>
+      </article>`).join(""):`<div class="empty-state"><b>${state.items.length?"No matching items":`No ${TYPE_LABELS[activeListType].toLowerCase()} yet`}</b>${typeItems.length?"Try changing your search or filters.":`Add items to your ${TYPE_LABELS[activeListType].toLowerCase()} list.`}</div>`;
+  }
+  function renderHistory(){
+    $("#historyList").innerHTML=state.history.length?state.history.map(h=>`
+      <article class="history-card" data-id="${h.id}"><span class="history-icon">▤</span><div class="history-main"><b>${esc(TYPE_LABELS[h.type||h.items[0]?.type||"grocery"]||"Shopping session")} · ${h.items.length} items</b><small>${date(h.date)} · ${h.purchased} collected · ${h.pct}% complete</small></div><span class="history-total">${money(h.totalCost)}</span><div class="history-actions"><button class="mini-action" data-action="restore" aria-label="Restore list">↶</button><button class="mini-action" data-action="history-delete" aria-label="Delete history">×</button></div></article>`).join(""):`<div class="empty-state"><b>No completed sessions yet</b>When you complete a shopping list, it will be saved here.</div>`;
+  }
+  let activeReportType="grocery";
+  function renderInsights(){
+    const labels={all:"Household shopping activity only.",grocery:"Household grocery purchases and collected items only.",stock:"Business resale stock purchases only. Sales revenue and profit remain in the Business Stock inventory panel.",material:"Service-delivery materials and job-related purchases only."};
+    const all=Array.isArray(state.history)?state.history:[];
+    const typeOf=h=>h.type||h.items?.[0]?.type||"grocery";
+    const hist=activeReportType==="all"?all:all.filter(h=>typeOf(h)===activeReportType);
+    const itemRows=hist.flatMap(h=>(Array.isArray(h.items)?h.items:[]));
+    const avg=hist.length?Math.round(hist.reduce((sum,h)=>sum+(Number(h.pct)||0),0)/hist.length):0;
+    const spend=hist.reduce((sum,h)=>sum+(Number(h.totalCost)||0),0);
+    $("#insightLists").textContent=hist.length;$("#insightItems").textContent=itemRows.length;$("#insightAverage").textContent=avg+"%";$("#insightSpend").textContent=money(spend);
+    $("#reportCaption").textContent=labels[activeReportType];
+    $$("[data-report-type]").forEach(b=>b.classList.toggle("active",b.dataset.reportType===activeReportType));
+    const cats={};itemRows.forEach(i=>{const cat=i.category||"Other";cats[cat]=(cats[cat]||0)+(Number(i.qty)||1);});
+    const entries=Object.entries(cats).sort((a,b)=>b[1]-a[1]),max=Math.max(1,...entries.map(x=>x[1]));
+    $("#categoryChart").innerHTML=entries.length?entries.map(([cat,count])=>`<div class="category-row"><span>${CATS[cat]||"📦"} ${esc(cat)}</span><div class="category-track"><span style="width:${Math.max(3,count/max*100)}%"></span></div><strong>${count}</strong></div>`).join(""):`<div class="empty-state"><b>No report data yet</b>Complete collected items in this purpose to build its report.</div>`;
+    const types=["grocery","stock","material"],summary=types.map(type=>{const rows=all.filter(h=>typeOf(h)===type),items=rows.flatMap(h=>h.items||[]),value=rows.reduce((a,h)=>a+(Number(h.totalCost)||0),0);return {type,rows,items,value};});
+    const top=Math.max(1,...summary.map(x=>x.value));
+    $("#purposeComparison").innerHTML=summary.map(x=>`<div class="purpose-comparison-row"><span>${esc(TYPE_LABELS[x.type])}</span><strong>${money(x.value)}</strong><div class="purpose-comparison-track"><span style="width:${x.value/top*100}%"></span></div><small>${x.rows.length} sessions · ${x.items.length} collected items</small></div>`).join("");
+  }
+  function renderInventoryIntelligence(typed,low){
+    const units=typed.reduce((sum,x)=>sum+Math.max(0,Number(x.qty)||0),0);
+    const value=typed.reduce((sum,x)=>sum+Math.max(0,Number(x.qty)||0)*Math.max(0,Number(x.costPrice)||0),0);
+    $("#intelUnits").textContent=units.toLocaleString("en-ZA");
+    $("#intelValue").textContent=money(value);
+    $("#intelReorderCount").textContent=low.length;
+    const queue=$("#reorderQueue");
+    queue.innerHTML=low.length?low.map(x=>{
+      const qty=Math.max(1,Number(x.min||0)-Number(x.qty||0));
+      return `<article class="reorder-row"><div><b>${esc(x.name)}</b><small>${esc(TYPE_LABELS[x.type||"grocery"])} · On hand ${Number(x.qty)||0} ${esc(x.unit||"each")} · Minimum ${Number(x.min)||0}</small></div><strong>+${qty} ${esc(x.unit||"each")}</strong><button type="button" class="secondary-btn" data-restock-one="${esc(x.id)}">Add to list</button></article>`;
+    }).join(""):`<div class="intelligence-clear">✓ All tracked items are above their minimum stock levels.</div>`;
+    const barcodes=typed.filter(x=>String(x.barcode||"").trim());
+    const seen=new Set(),duplicates=new Set();
+    barcodes.forEach(x=>{const code=String(x.barcode).trim().toLowerCase();if(seen.has(code))duplicates.add(code);seen.add(code);});
+    const audit=$("#barcodeAudit");
+    audit.hidden=!duplicates.size;
+    audit.textContent=duplicates.size?`Barcode check: ${duplicates.size} duplicate barcode value(s) found in this inventory purpose. Review the matching product records before relying on barcode lookup.`:"";
+    $("#addAllRestock").disabled=!low.length;
+  }
+  function addInventoryRestockToList(x){
+    const need=Math.max(1,Number(x.min||0)-Number(x.qty||0));
+    let existing=state.items.find(i=>i.name.trim().toLowerCase()===x.name.trim().toLowerCase()&&(i.type||"grocery")===(x.type||"grocery")&&!i.done);
+    if(existing)existing.qty=Math.min(999999,Number(existing.qty||0)+need);
+    else state.items.unshift({id:uid(),name:x.name,type:x.type||"grocery",qty:need,unit:x.unit||"each",category:x.category||"Other",priority:"high",price:0,store:x.store||"",location:x.location||"",notes:"Restock recommendation from inventory",done:false,created:Date.now()});
+    return need;
+  }
+  function renderInventory(){
+    const q=($("#stockSearch").value||"").toLowerCase(), filter=$("#stockFilter").value||"all";
+    const typed=state.inventory.filter(x=>(x.type||"grocery")===activeInventoryType);
+    const low=typed.filter(x=>Number(x.qty)<=Number(x.min));
+    renderInventoryIntelligence(typed,low);
+    $("#stockCount").textContent=typed.length;$("#lowStockCount").textContent=low.length;$("#healthyStockCount").textContent=typed.length-low.length;
+    const restock=low.reduce((sum,x)=>{const match=state.items.find(i=>i.name.toLowerCase()===x.name.toLowerCase()&&(i.type||"grocery")===(x.type||"grocery"));return sum+Math.max(0,Number(x.min)-Number(x.qty))*(match?Number(match.price)||0:0);},0);$("#restockValue").textContent=money(restock);
+    let rows=typed.filter(x=>[x.name,x.category,x.store,x.location].join(" ").toLowerCase().includes(q));
+    if(filter==="low")rows=rows.filter(x=>Number(x.qty)<=Number(x.min));if(filter==="healthy")rows=rows.filter(x=>Number(x.qty)>Number(x.min));
+    rows.sort((a,b)=>(Number(a.qty)-Number(a.min))-(Number(b.qty)-Number(b.min)));
+    $("#inventoryList").innerHTML=rows.length?rows.map(x=>{const isLow=Number(x.qty)<=Number(x.min);return `<article class="grocery-item stock-item" data-stock-id="${x.id}"><span class="item-emoji">${x.photo?`<img class="stock-photo" src="${x.photo}" alt="${esc(x.name)}">`:CATS[x.category]||"📦"}</span><div class="item-main"><div class="item-name">${esc(x.name)}</div><div class="item-meta">${esc(TYPE_LABELS[x.type||"grocery"])} · ${esc(x.category)} · Minimum ${x.min} ${esc(x.unit)}${x.store?" · "+esc(x.store):""}${x.location?" · "+esc(x.location):""}</div>${x.barcode?`<span class="barcode-tag">▦ ${esc(x.barcode)}</span>`:""}</div><strong class="stock-quantity">${qtyText(x.qty,x.unit)} ${esc(x.unit)}</strong><span class="stock-badge ${isLow?"low":"healthy"}">${isLow?"LOW STOCK":"IN STOCK"}</span><div class="item-actions">${activeInventoryType==="stock"?`<button class="mini-action sale-action" data-stock-action="sale" aria-label="Record sale of ${esc(x.name)}">R$</button>`:""}<button class="mini-action" data-stock-action="minus" aria-label="Decrease ${esc(x.name)} stock">−</button><button class="mini-action" data-stock-action="plus" aria-label="Increase ${esc(x.name)} stock">＋</button><button class="mini-action" data-stock-action="restock" aria-label="Add ${esc(x.name)} to shopping list">🛒</button><button class="mini-action" data-stock-action="edit" aria-label="Edit ${esc(x.name)}">✎</button></div>${activeInventoryType==="stock"?`<div class="stock-pricing-line">Cost ${money(x.costPrice||0)} · Sell ${money(x.sellPrice||0)} · Margin ${Number(x.sellPrice)>0?(((Number(x.sellPrice)-Number(x.costPrice||0))/Number(x.sellPrice))*100).toFixed(1):"0.0"}%</div>`:""}</article>`;}).join(""):`<div class="empty-state"><b>${typed.length?"No matching items":`No ${TYPE_LABELS[activeInventoryType].toLowerCase()} inventory yet`}</b>${typed.length?"Change the search or filter.":"Add an item here or complete a shopping list with collected items to build inventory automatically."}</div>`;
+    $$("[data-inventory-type]").forEach(b=>b.classList.toggle("active",b.dataset.inventoryType===activeInventoryType));
+    $("#inventoryPurposeNote").textContent=LIST_TYPE_COPY[activeInventoryType];
+    $("#inventoryHeading").textContent=activeInventoryType==="grocery"?"Household inventory":activeInventoryType==="stock"?"Business stock inventory":"Service materials inventory";
+    const panel=$("#businessPanel");panel.hidden=activeInventoryType!=="stock";
+    if(activeInventoryType==="stock"){
+      const costValue=typed.reduce((a,x)=>a+Number(x.qty||0)*Number(x.costPrice||0),0),salesValue=typed.reduce((a,x)=>a+Number(x.qty||0)*Number(x.sellPrice||0),0),sales=(state.sales||[]).filter(x=>x.type==="stock"),activeSales=sales.filter(x=>!x.reversed),revenue=activeSales.reduce((a,x)=>a+Number(x.revenue||0),0),profit=activeSales.reduce((a,x)=>a+Number(x.profit||0),0);
+      $("#businessCostValue").textContent=money(costValue);$("#businessSalesValue").textContent=money(salesValue);$("#businessRevenue").textContent=money(revenue);$("#businessProfit").textContent=money(profit);
+      const recent=sales.slice(0,12);$("#salesList").innerHTML=recent.length?recent.map(x=>`<article class="history-card ${x.reversed?"sale-reversed":""}" data-sale-id="${esc(x.id)}"><span class="history-icon">${x.reversed?"↶":"↗"}</span><div class="history-main"><b>${esc(x.name)}${x.reversed?" · REVERSED":""}</b><small>${date(x.date)} · ${qtyText(x.qty,x.unit)} ${esc(x.unit)} sold${x.reversed?` · Reversed ${date(x.reversedAt)}`:""}</small></div><strong>${money(x.revenue)}</strong><small>Profit ${money(x.profit)}</small>${x.reversed?"":`<button type="button" class="mini-action reverse-sale" data-sale-action="reverse" aria-label="Reverse sale of ${esc(x.name)}">↶</button>`}</article>`).join(""):`<div class="empty-state">No sales recorded yet. Use the R$ button beside a business stock item to record a sale.</div>`;
+      renderProcurement();
+      renderProductAnalytics(typed);
+    }
+    renderMovements();
+  }
+  function renderAll(){renderDashboard();renderItems();renderInventory();renderHistory();renderInsights();}
+  function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+  function normalizeBarcode(value){return String(value||'').trim().replace(/[\s-]+/g,'').toUpperCase();}
+  function barcodeMatches(code,excludeId=''){
+    const key=normalizeBarcode(code);if(!key)return [];
+    const rows=[...state.items.map(x=>({...x,_source:'shopping'})),...state.inventory.map(x=>({...x,_source:'inventory'}))];
+    return rows.filter(x=>x.id!==excludeId&&normalizeBarcode(x.barcode)===key);
+  }
+  async function lookupProductByBarcode(code,kind){
+    const key=normalizeBarcode(code);if(!key)return null;
+    const nameInput=kind==='stock'?$('#stockName'):$('#itemName');
+    const status=kind==='stock'?$('#scannerStatus'):$('#shoppingScannerStatus');
+    if(status)status.textContent='Barcode captured. Looking up product information…';
+    // Open Food Facts is a public product catalogue; lookup is optional and never blocks saving.
+    try{
+      const response=await fetch('https://world.openfoodfacts.org/api/v2/product/'+encodeURIComponent(key)+'.json?fields=product_name,product_name_en,brands,quantity,categories_tags,image_front_url',{headers:{'Accept':'application/json'}});
+      if(!response.ok)throw new Error('Catalogue unavailable');
+      const data=await response.json();
+      if(data.status!==1||!data.product){if(status)status.textContent='Barcode captured: '+key+'. No product record found; enter the item name manually.';return null;}
+      const p=data.product;const productName=String(p.product_name_en||p.product_name||'').trim();
+      if(productName&&nameInput&&!nameInput.value.trim())nameInput.value=productName;
+      if(kind==='shopping'&&p.quantity&&!$('#itemNotes').value.trim())$('#itemNotes').value='Pack size: '+p.quantity;
+      const details=[productName,p.brands?'Brand: '+p.brands:'',p.quantity?'Pack: '+p.quantity:''].filter(Boolean).join(' · ');
+      if(status)status.textContent='Product found: '+(details||key)+'. Check the item name before saving.';
+      return p;
+    }catch(err){if(status)status.textContent='Barcode captured: '+key+'. Product lookup unavailable; you can still save the item manually.';return null;}
+  }
+  function warnDuplicateBarcode(code,excludeId=''){
+    const matches=barcodeMatches(code,excludeId);if(!matches.length)return false;
+    const first=matches[0];
+    return !confirm('This barcode is already assigned to “'+first.name+'” ('+first._source+'). Save another record with the same barcode anyway?');
+  }
+
+  const FORM_CATEGORIES = {
+    grocery:["Groceries","Vegetables","Fruit","Dairy","Bakery","Meat & Fish","Frozen","Drinks","Pantry","Household Items","Clothing & Accessories","Electronics","Personal Care & Health","Education & Office","Other Purchases","Other"],
+    stock:["Business Products","Equipment","Packaging","Stationery","Electronics","Clothing & Accessories","Tools & Equipment","Homeware","Automotive","Other"],
+    material:["Building Materials","Electrical","Plumbing","Cleaning","Tools & Equipment","Decorating","Catering Supplies","Other"]
+  };
+  const PURPOSE_META={
+    grocery:{title:"Groceries",eyebrow:"HOUSEHOLD GROCERY FORM",name:"Grocery item",placeholder:"e.g. Full cream milk",icon:"🛒"},
+    stock:{title:"Business stock",eyebrow:"BUSINESS STOCK PURCHASE FORM",name:"Product name",placeholder:"e.g. Wireless earbuds",icon:"📦"},
+    material:{title:"Service materials",eyebrow:"SERVICE MATERIALS FORM",name:"Material name",placeholder:"e.g. PVC pipe, paint or cleaning chemical",icon:"🧰"}
+  };
+  let activePurpose="grocery";
+  let purposeDrafts={grocery:{},stock:{},material:{}};
+  const units=['each','pack','kg','g','litre','ml','dozen','box','bottle','metre','roll','pair','set','sheet','bag'];
+  function fieldLabel(id,label,value,placeholder='',type='text',attrs=''){
+    return `<label>${label}<input id="${id}" type="${type}" value="${esc(value??'')}" placeholder="${esc(placeholder)}" ${attrs}></label>`;
+  }
+  function selectField(id,label,options,value){
+    return `<label>${label}<select id="${id}">${options.map(v=>`<option value="${esc(v)}" ${v===value?'selected':''}>${esc(v)}</option>`).join('')}</select></label>`;
+  }
+  function formValues(){
+    const ids=['itemName','itemQty','itemUnit','itemCategory','itemPriority','itemPrice','itemStore','itemLocation','itemNotes','itemSku','itemSellPrice','itemReorder','itemProject','itemService','itemBarcode'];
+    const out={};ids.forEach(id=>{const el=document.getElementById(id);if(el)out[id]=el.value;});return out;
+  }
+  function renderPurposeFields(values={}){
+    const type=activePurpose,meta=PURPOSE_META[type],cats=FORM_CATEGORIES[type];
+    $$('.purpose-option').forEach(btn=>{const on=btn.dataset.purpose===type;btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',String(on));});
+    $('#itemType').value=type;$('#itemEyebrow').textContent=meta.eyebrow;
+    $('#itemDialogTitle').textContent=($('#editId').value?'Edit ':'Add ')+meta.title.toLowerCase()+' item';
+    const qty=values.itemQty||1,unit=values.itemUnit||'each',category=cats.includes(values.itemCategory)?values.itemCategory:'Other';
+    let specific='';
+    if(type==='grocery'){
+      specific=`<div class="form-section-title">GROCERY DETAILS</div><div class="form-two">${selectField('itemCategory','Grocery category',cats,category)}${selectField('itemPriority','Priority',['Low','Medium','High'],(values.itemPriority||'medium').replace(/^./,c=>c.toUpperCase()))}</div>${fieldLabel('itemPrice','Estimated unit price',values.itemPrice,'0.00','number','min="0" step="0.01"')}<div class="form-two supplier-fields">${fieldLabel('itemStore','Store name',values.itemStore,'e.g. Checkers, Shoprite, Makro')}${fieldLabel('itemLocation','Store location',values.itemLocation,'e.g. Komatipoort, town centre')}</div><label>Notes<textarea id="itemNotes" rows="3" maxlength="300" placeholder="Brand, size or household notes…">${esc(values.itemNotes||'')}</textarea></label>`;
+    }else if(type==='stock'){
+      specific=`<div class="form-section-title">PRODUCT & RESELLING DETAILS</div><div class="form-two">${selectField('itemCategory','Product category',cats,category)}${fieldLabel('itemSku','SKU / product code',values.itemSku,'Optional product code')}</div><div class="form-two">${fieldLabel('itemPrice','Purchase cost per unit',values.itemPrice,'0.00','number','min="0" step="0.01"')}${fieldLabel('itemSellPrice','Planned selling price',values.itemSellPrice,'0.00','number','min="0" step="0.01"')}</div><div class="form-two">${fieldLabel('itemReorder','Minimum / reorder level',values.itemReorder,'e.g. 5','number','min="0" step="1"')}${selectField('itemPriority','Purchase priority',['Low','Medium','High'],(values.itemPriority||'medium').replace(/^./,c=>c.toUpperCase()))}</div><div class="form-section-title">SUPPLIER DETAILS</div><div class="form-two supplier-fields">${fieldLabel('itemStore','Supplier / store name',values.itemStore,'e.g. wholesaler or Makro')}${fieldLabel('itemLocation','Supplier location',values.itemLocation,'City, area or branch')}</div><label>Product notes<textarea id="itemNotes" rows="3" maxlength="300" placeholder="Brand, model, colour, warranty or pack details…">${esc(values.itemNotes||'')}</textarea></label><p class="field-help">Purchase cost and planned selling price are estimates. Profit calculations can be added in a later stock-management milestone.</p>`;
+    }else{
+      specific=`<div class="form-section-title">MATERIAL & JOB DETAILS</div><div class="form-two">${selectField('itemCategory','Material category',cats,category)}${fieldLabel('itemProject','Project / job name',values.itemProject,'e.g. Office repainting')}</div>${fieldLabel('itemService','Service being delivered',values.itemService,'e.g. Painting, plumbing, catering') }<div class="form-two">${fieldLabel('itemPrice','Estimated cost per unit',values.itemPrice,'0.00','number','min="0" step="0.01"')}${selectField('itemPriority','Purchase priority',['Low','Medium','High'],(values.itemPriority||'medium').replace(/^./,c=>c.toUpperCase()))}</div><div class="form-section-title">SUPPLIER DETAILS</div><div class="form-two supplier-fields">${fieldLabel('itemStore','Supplier / store name',values.itemStore,'e.g. building supplier')}${fieldLabel('itemLocation','Supplier location',values.itemLocation,'City, area or branch')}</div><label>Material notes<textarea id="itemNotes" rows="3" maxlength="300" placeholder="Specification, colour, size or job instructions…">${esc(values.itemNotes||'')}</textarea></label>`;
+    }
+    $('#purposeFormFields').innerHTML=`<div class="purpose-fields">${fieldLabel('itemName',type==='grocery'?'Item name':type==='stock'?'Business item name':'Purchase item name',values.itemName,meta.placeholder,'text','required maxlength="100"')}<div class="form-two">${fieldLabel('itemQty','Quantity',qty,'1','number','min="0.01" max="999999" step="any" required')}${selectField('itemUnit','Unit',units,unit)}</div><div class="form-two barcode-entry">${fieldLabel('itemBarcode','Barcode / EAN / UPC',values.itemBarcode,'Scan or enter barcode','text','maxlength="80" inputmode="numeric"')}<button type="button" class="secondary-btn scan-trigger" id="scanShoppingBarcode">▦ Scan barcode</button></div><div id="shoppingBarcodeScanner" class="barcode-scanner" hidden><video id="shoppingBarcodeVideo" playsinline muted></video><p id="shoppingScannerStatus" class="dialog-note">Point the camera at a product barcode.</p><div class="scanner-actions"><button type="button" class="secondary-btn" id="shoppingScannerTorch" hidden>🔦 Light off</button><button type="button" class="secondary-btn" id="stopShoppingScanner">Stop camera</button></div></div>${specific}</div>`;
+  }
+  $$('.purpose-option').forEach(btn=>btn.addEventListener('click',()=>{purposeDrafts[activePurpose]=formValues();activePurpose=btn.dataset.purpose;renderPurposeFields(purposeDrafts[activePurpose]||{});}));
+  function openItem(id){
+    const i=state.items.find(x=>x.id===id),type=i?.type||'grocery';activePurpose=type;purposeDrafts={grocery:{},stock:{},material:{}};
+    purposeDrafts[type]=i?{itemName:i.name,itemQty:i.qty,itemUnit:i.unit,itemCategory:i.category,itemPriority:i.priority,itemPrice:i.price,itemStore:i.store,itemLocation:i.location,itemNotes:i.notes,itemSku:i.sku,itemSellPrice:i.sellPrice,itemReorder:i.reorder,itemProject:i.project,itemService:i.service,itemBarcode:i.barcode}:{};
+    renderPurposeFields(purposeDrafts[type]);
+    $('#editId').value=i?.id||'';openDialog('itemDialog');setTimeout(()=>$('#itemName').focus(),100);
+  }
+
+  let shoppingScannerStream=null,shoppingScanFrame=0,stockScanFrame=0,activeScannerKind=null;
+  function stopShoppingBarcodeScanner(){if(shoppingScanFrame)cancelAnimationFrame(shoppingScanFrame);shoppingScanFrame=0;if(shoppingScannerStream){shoppingScannerStream.getTracks().forEach(t=>t.stop());shoppingScannerStream=null;}const v=$('#shoppingBarcodeVideo');if(v){v.pause();v.srcObject=null;}const panel=$('#shoppingBarcodeScanner');if(panel)panel.hidden=true;if(activeScannerKind==='shopping')activeScannerKind=null;}
+  function stopBarcodeScanner(){if(stockScanFrame)cancelAnimationFrame(stockScanFrame);stockScanFrame=0;if(scannerStream){scannerStream.getTracks().forEach(t=>t.stop());scannerStream=null;}const v=$('#barcodeVideo');if(v){v.pause();v.srcObject=null;}const panel=$('#barcodeScanner');if(panel)panel.hidden=true;if(activeScannerKind==='stock')activeScannerKind=null;}
+  function scannerEnvironment(){
+    const secure=window.isSecureContext===true;
+    const media=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia);
+    const detector=typeof window.BarcodeDetector==='function';
+    return {secure,media,detector,protocol:location.protocol,host:location.hostname};
+  }
+  function scannerUnavailableMessage(){
+    const e=scannerEnvironment();
+    if(!e.secure)return 'Camera blocked: this page is not a secure context. Open Shopping Master from an HTTPS website or localhost.';
+    if(!e.media)return 'Camera API unavailable in this browser tab. Local content:// files may not be allowed to use the camera. Open the app over HTTPS or localhost.';
+    if(!e.detector)return 'Camera is available, but this Chrome version has no built-in offline barcode decoder. Update Chrome or use manual barcode entry.';
+    return '';
+  }
+  async function startBarcodeScan(kind){
+    const stock=kind==='stock';
+    const input=$(stock?'#stockBarcode':'#itemBarcode');
+    const video=$(stock?'#barcodeVideo':'#shoppingBarcodeVideo');
+    const panel=$(stock?'#barcodeScanner':'#shoppingBarcodeScanner');
+    const status=$(stock?'#scannerStatus':'#shoppingScannerStatus');
+    const stop=stock?stopBarcodeScanner:stopShoppingBarcodeScanner;
+    stop();
+    if(!input||!video||!panel||!status){notify('Scanner interface could not be opened. Close and reopen the item form.','error');return;}
+    const unavailable=scannerUnavailableMessage();
+    if(unavailable){panel.hidden=false;status.textContent=unavailable;notify(unavailable,'error');return;}
+    try{
+      let formats=['ean_13','ean_8','upc_a','upc_e','code_128','code_39','itf','qr_code'];
+      if(typeof window.BarcodeDetector.getSupportedFormats==='function'){
+        const supported=await window.BarcodeDetector.getSupportedFormats();
+        formats=formats.filter(f=>supported.includes(f));
+      }
+      if(!formats.length)throw new Error('This browser does not support common product barcode formats.');
+      const detector=new window.BarcodeDetector({formats});
+      panel.hidden=false;status.textContent='Opening rear camera…';
+      const stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720},frameRate:{ideal:30,max:30}}});
+      if(stock)scannerStream=stream;else shoppingScannerStream=stream;
+      activeScannerKind=kind;
+      const track=stream.getVideoTracks()[0];
+      const caps=track.getCapabilities?track.getCapabilities():{};
+      const settings=track.getSettings?track.getSettings():{};
+      // Autofocus is device-dependent. Prefer continuous mode and fall back to single-shot when offered.
+      try{
+        if(caps.focusMode){
+          const mode=caps.focusMode.includes('continuous')?'continuous':(caps.focusMode.includes('single-shot')?'single-shot':null);
+          if(mode)await track.applyConstraints({advanced:[{focusMode:mode}]});
+        }
+      }catch(focusErr){}
+      video.setAttribute('playsinline','');video.muted=true;video.autoplay=true;video.srcObject=stream;
+      video.style.display='block';video.style.margin='0 auto';video.style.width='auto';video.style.maxWidth='100%';video.style.height='auto';video.style.maxHeight='360px';video.style.objectFit='contain';video.style.background='transparent';
+      await video.play();
+      // Keep the video preview proportional to the actual camera stream; don't stretch portrait video into a landscape box.
+      if(video.videoWidth&&video.videoHeight)video.style.aspectRatio=video.videoWidth+'/'+video.videoHeight;
+      status.textContent='Camera active · '+(settings.width||video.videoWidth)+' × '+(settings.height||video.videoHeight)+'. Start at the widest view; move closer only until the barcode is sharp and fills the guide.';
+      const torchButton=$(stock?'#scannerTorch':'#shoppingScannerTorch');
+      if(torchButton){torchButton.hidden=!(caps.torch===true);torchButton.dataset.enabled='false';torchButton.textContent='🔦 Light off';}
+      // Expose a zoom control only when the camera reports hardware zoom support.
+      let zoomControl=$(stock?'#scannerZoom':'#shoppingScannerZoom');
+      if(!zoomControl){
+        const actions=panel.querySelector('.scanner-actions');
+        if(actions){zoomControl=document.createElement('label');zoomControl.id=stock?'scannerZoom':'shoppingScannerZoom';zoomControl.className='scanner-zoom';zoomControl.innerHTML='<span>Zoom</span><input type="range" min="1" max="3" step="0.1" value="1" aria-label="Camera zoom">';actions.prepend(zoomControl);}
+      }
+      if(zoomControl){
+        const range=zoomControl.querySelector('input');
+        const zoom=caps.zoom;
+        zoomControl.hidden=!(zoom&&range);
+        if(zoom&&range){
+          // Some Android cameras expose sub-1x zoom (ultra-wide). Do not clamp it to 1x.
+          const minZoom=Number.isFinite(zoom.min)?zoom.min:1;
+          const maxZoom=Math.min(5,Number.isFinite(zoom.max)?zoom.max:3);
+          range.min=String(minZoom);range.max=String(maxZoom);range.step=String(zoom.step||0.1);
+          const startZoom=Math.max(minZoom,Math.min(maxZoom,1));range.value=String(startZoom);
+          const zoomLabel=zoomControl.querySelector('span');
+          if(zoomLabel)zoomLabel.textContent='Zoom '+startZoom.toFixed(1)+'×';
+          range.oninput=async()=>{const value=Number(range.value);if(zoomLabel)zoomLabel.textContent='Zoom '+value.toFixed(1)+'×';try{await track.applyConstraints({advanced:[{zoom:value}]});}catch(e){status.textContent='This camera cannot apply that zoom level.';}};
+          // Explicitly begin at the widest supported camera view.
+          try{await track.applyConstraints({advanced:[{zoom:minZoom}]});range.value=String(minZoom);if(zoomLabel)zoomLabel.textContent='Zoom '+minZoom.toFixed(1)+'×';}catch(e){}
+        }
+      }
+      let busy=false, lastRead=0;
+      const scan=async()=>{
+        if(stock?!scannerStream:!shoppingScannerStream)return;
+        if(!busy&&video.readyState>=2&&video.videoWidth>0&&Date.now()-lastRead>180){
+          busy=true;lastRead=Date.now();
+          try{
+            const codes=await detector.detect(video);
+            if(codes&&codes.length&&codes[0].rawValue){
+              const value=codes[0].rawValue;
+              input.value=value;input.dispatchEvent(new Event('input',{bubbles:true}));
+              status.textContent='Barcode captured: '+value;
+              stop();notify('Barcode captured successfully');
+              lookupProductByBarcode(value,stock?'stock':'shopping');return;
+            }
+          }catch(readErr){status.textContent='Camera is active, but no barcode was decoded. Move closer, keep the code flat, improve lighting, and allow the camera to focus.';}
+          finally{busy=false;}
+        }
+        if(stock)stockScanFrame=requestAnimationFrame(scan);else shoppingScanFrame=requestAnimationFrame(scan);
+      };
+      scan();
+    }catch(err){
+      stop();let msg='Could not start barcode scanning. ';
+      if(err&&err.name==='NotAllowedError')msg+='Camera permission was denied. Allow camera access for this site in Chrome settings.';
+      else if(err&&err.name==='NotFoundError')msg+='No camera was found on this device.';
+      else if(err&&err.name==='NotReadableError')msg+='The camera is busy. Close other camera apps and try again.';
+      else msg+=(err&&err.message?err.message:'Check camera permission and open the app over HTTPS or localhost.');
+      if(status){panel.hidden=false;status.textContent=msg;}notify(msg,'error');
+    }
+  }
+  // Capture-phase delegation makes scanner controls respond even when the icon/text inside is tapped.
+  document.addEventListener('click',e=>{
+    const target=e.target instanceof Element?e.target:null;if(!target)return;
+    const scan=target.closest('#scanBarcode,#scanShoppingBarcode');
+    if(scan){e.preventDefault();e.stopImmediatePropagation();startBarcodeScan(scan.id==='scanBarcode'?'stock':'shopping');return;}
+    const torch=target.closest('#scannerTorch,#shoppingScannerTorch');
+    if(torch){e.preventDefault();const stream=torch.id==='scannerTorch'?scannerStream:shoppingScannerStream;const track=stream&&stream.getVideoTracks()[0];if(!track)return;const next=torch.dataset.enabled!=='true';track.applyConstraints({advanced:[{torch:next}]}).then(()=>{torch.dataset.enabled=String(next);torch.textContent=next?'🔦 Light on':'🔦 Light off';}).catch(()=>{torch.hidden=true;notify('Flashlight control is not supported by this camera.');});return;}
+    if(target.closest('#stopScanner')){e.preventDefault();stopBarcodeScanner();return;}
+    if(target.closest('#stopShoppingScanner')){e.preventDefault();stopShoppingBarcodeScanner();}
+  },true);
+  $('#itemDialog').addEventListener('close',stopShoppingBarcodeScanner);
+  document.addEventListener('focusout',e=>{if(e.target&&e.target.id==='itemBarcode'&&e.target.value.trim())lookupProductByBarcode(e.target.value,'shopping');if(e.target&&e.target.id==='stockBarcode'&&e.target.value.trim())lookupProductByBarcode(e.target.value,'stock');});
+
+  $('#itemForm').addEventListener('submit',e=>{
+    e.preventDefault();const name=$('#itemName').value.trim();if(!name){notify('Enter an item name.');return;}
+    const id=$('#editId').value,existing=state.items.find(i=>i.id===id),read=id=>document.getElementById(id)?.value||'';purposeDrafts[activePurpose]=formValues();
+    const priority=(read('itemPriority')||'Medium').toLowerCase();
+    const item={id:id||uid(),name,type:activePurpose,qty:Math.max(.01,Math.min(999999,Number(read('itemQty'))||1)),unit:read('itemUnit')||'each',category:read('itemCategory')||'Other',priority,price:Math.max(0,Number(read('itemPrice'))||0),store:read('itemStore').trim(),location:read('itemLocation').trim(),notes:read('itemNotes').trim(),sku:read('itemSku').trim(),sellPrice:Math.max(0,Number(read('itemSellPrice'))||0),reorder:Math.max(0,Number(read('itemReorder'))||0),project:read('itemProject').trim(),service:read('itemService').trim(),barcode:read('itemBarcode').trim(),done:existing?.done||false,created:existing?.created||Date.now()};
+    if(item.barcode&&warnDuplicateBarcode(item.barcode,id))return;
+    if(existing)Object.assign(existing,item);else state.items.unshift(item);
+    activeListType=activePurpose;
+    filters.category="all";
+    $("#categoryFilter").value="all";
+    save();closeDialog('itemDialog');renderAll();notify(existing?'Item updated':'Item added to your '+PURPOSE_META[activePurpose].title.toLowerCase()+' list');
+  });
+  $("#itemList").addEventListener("click",e=>{
+    const btn=e.target.closest("[data-action]");if(!btn)return;const card=btn.closest("[data-id]"),id=card?.dataset.id,item=state.items.find(i=>i.id===id);if(!item)return;
+    const action=btn.dataset.action;
+    if(action==="toggle"){item.done=!item.done;save();renderAll();notify(item.done?"Marked as collected":"Moved back to your list");}
+    if(action==="qty-plus"){item.qty=cleanQty(Math.min(999999,Number(item.qty||0)+qtyStep(item.unit)),item.unit,.01);save();renderAll();}
+    if(action==="qty-minus"){item.qty=cleanQty(Math.max(.01,Number(item.qty||1)-qtyStep(item.unit)),item.unit,.01);save();renderAll();}
+    if(action==="edit")openItem(id);
+    if(action==="delete"&&confirm(`Delete "${item.name}" from your list?`)){state.items=state.items.filter(i=>i.id!==id);save();renderAll();notify("Item deleted");}
+  });
+  function checkout(){
+    const scoped=state.items.filter(i=>(i.type||"grocery")===activeListType),done=scoped.filter(i=>i.done).length,left=scoped.length-done;
+    $("#checkoutBought").textContent=done;$("#checkoutLeft").textContent=left;$("#checkoutTotal").textContent=money(totalCost(scoped));
+    $("#checkoutMessage").textContent=`${TYPE_LABELS[activeListType]}: `+(left?`${left} unchecked item${left===1?" remains":"s remain"}. Completing now moves only collected items to history; the rest stay on your active list.`:"Everything in this list is checked off. You can complete it now.");
+    $("#completeList").textContent=done?`Complete collected items (${done})`:"No collected items to complete";
+    $("#completeList").disabled=!done;
+    openDialog("checkoutDialog");
+  }
+  $("#completeList").addEventListener("click",()=>{
+    const scoped=state.items.filter(i=>(i.type||"grocery")===activeListType),collected=scoped.filter(i=>i.done),left=scoped.length-collected.length;
+    if(!collected.length){notify("Mark at least one item as collected before completing it.");return;}
+    const pct=Math.round(collected.length/scoped.length*100);
+    const session={id:uid(),date:Date.now(),type:activeListType,items:clone(collected),purchased:collected.length,pct,totalCost:totalCost(collected)};
+    // Only collected items enter inventory and history. Unchecked items remain active.
+    collected.forEach(i=>{
+      const record=state.inventory.find(x=>x.name.trim().toLowerCase()===i.name.trim().toLowerCase()&&(x.type||"grocery")===(i.type||"grocery"));
+      if(record){record.qty=Math.min(999999,Number(record.qty||0)+Number(i.qty||0));logStockMovement(record,Number(i.qty||0),"Shopping checkout received");record.unit=i.unit||record.unit;record.category=i.category||record.category;record.store=i.store||record.store;record.location=i.location||record.location;if(i.type==="stock"){record.costPrice=Number(i.price)||Number(record.costPrice)||0;record.sellPrice=Number(i.sellPrice)||Number(record.sellPrice)||0;}}
+      else {const created={id:uid(),name:i.name,type:i.type||"grocery",qty:Number(i.qty)||1,min:Number(i.reorder)||1,unit:i.unit||"each",category:i.category||"Other",store:i.store||"",location:i.location||"",costPrice:i.type==="stock"?(Number(i.price)||0):0,sellPrice:i.type==="stock"?(Number(i.sellPrice)||0):0};state.inventory.push(created);logStockMovement(created,created.qty,"Shopping checkout received");}
+    });
+    state.history.unshift(session);state.stats.lists++;state.stats.items+=collected.length;state.stats.spend+=totalCost(collected);
+    collected.forEach(i=>state.stats.category[i.category]=(state.stats.category[i.category]||0)+i.qty);
+    const ids=new Set(collected.map(i=>i.id));state.items=state.items.filter(i=>!ids.has(i.id));save();closeDialog("checkoutDialog");renderAll();
+    notify(left?`${collected.length} collected item(s) saved to history. ${left} unchecked item(s) remain on your active list.`:`${TYPE_LABELS[activeListType]} completed and saved to history.`);
+  });
+  $("#historyList").addEventListener("click",e=>{
+    const b=e.target.closest("[data-action]");if(!b)return;const id=b.closest("[data-id]").dataset.id,h=state.history.find(x=>x.id===id);if(!h)return;
+    if(b.dataset.action==="restore"){
+      if(state.items.length&&!confirm("Replace your current active list with this restored list?"))return;
+      state.items=h.items.map(i=>({...i,id:uid(),type:i.type||h.type||"grocery",done:false,created:Date.now()}));activeListType=h.type||state.items[0]?.type||"grocery";save();navigate("shopping");notify("Previous list restored");
+    }else if(b.dataset.action==="history-delete"&&confirm("Delete this history record?")){
+      state.history=state.history.filter(x=>x.id!==id);save();renderHistory();notify("History record deleted");
+    }
+  });
+  function refreshStockPricing(){const isStock=$("#stockType").value==="stock";$("#stockPricingFields").hidden=!isStock;if(isStock){const c=Number($("#stockCost").value)||0,p=Number($("#stockSell").value)||0,margin=p>0?((p-c)/p*100):0;$("#stockMarginPreview").textContent=p?`Estimated profit per unit: ${money(p-c)} · Gross margin: ${margin.toFixed(1)}%`:`Enter a selling price to calculate margin.`;}}
+  function openStock(id){pendingStockPhoto=null;const x=state.inventory.find(v=>v.id===id);$("#stockDialogTitle").textContent=x?"Edit inventory item":"Add inventory item";$("#stockEditId").value=x?.id||"";$("#stockType").value=x?.type||activeInventoryType;$("#stockName").value=x?.name||"";$("#stockQty").value=x?.qty??1;$("#stockMin").value=x?.min??1;$("#stockUnit").value=x?.unit||"each";$("#stockCategory").value=x?.category||"Other";$("#stockStore").value=x?.store||"";$("#stockLocation").value=x?.location||"";$("#stockCost").value=x?.costPrice??"";$("#stockSell").value=x?.sellPrice??"";$("#stockBarcode").value=x?.barcode||"";$("#stockPhoto").value="";$("#stockPhotoPreview").hidden=!x?.photo;$("#stockPhotoPreview").innerHTML=x?.photo?`<img src="${x.photo}" alt="Product preview"><span>Saved product photo</span>`:"";stopBarcodeScanner();refreshStockPricing();openDialog("stockDialog");}
+  $("#stockPhoto").addEventListener("change",e=>{const file=e.target.files?.[0];if(!file)return;if(!file.type.startsWith("image/")){notify("Choose an image file.","error");return;}if(file.size>8*1024*1024){notify("Choose an image smaller than 8 MB.","error");return;}const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const c=document.createElement("canvas"),scale=Math.min(1,640/Math.max(img.width,img.height));c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext("2d").drawImage(img,0,0,c.width,c.height);pendingStockPhoto=c.toDataURL("image/jpeg",.72);$("#stockPhotoPreview").hidden=false;$("#stockPhotoPreview").innerHTML=`<img src="${pendingStockPhoto}" alt="Product preview"><span>Photo ready · compressed for local storage</span>`;};img.src=reader.result;};reader.readAsDataURL(file);});
+  let pendingStockPhoto=null;
+
+
+  $("#stockType").addEventListener("change",refreshStockPricing);$("#stockCost").addEventListener("input",refreshStockPricing);$("#stockSell").addEventListener("input",refreshStockPricing);
+  $("#stockForm").addEventListener("submit",e=>{e.preventDefault();const name=$("#stockName").value.trim();if(!name)return;const id=$("#stockEditId").value,old=state.inventory.find(x=>x.id===id),qty=Math.max(0,Number($("#stockQty").value)||0);const record={id:id||uid(),type:$("#stockType").value,name,qty,min:Math.max(0,Number($("#stockMin").value)||0),unit:$("#stockUnit").value,category:$("#stockCategory").value,store:$("#stockStore").value.trim(),location:$("#stockLocation").value.trim(),costPrice:Math.max(0,Number($("#stockCost").value)||0),sellPrice:Math.max(0,Number($("#stockSell").value)||0),barcode:$("#stockBarcode").value.trim(),photo:pendingStockPhoto!==null?pendingStockPhoto:(old?.photo||"")};if(record.barcode&&warnDuplicateBarcode(record.barcode,id))return;if(old){const delta=qty-Number(old.qty||0);Object.assign(old,record);if(delta)logStockMovement(old,delta,"Manual quantity adjustment");}else{state.inventory.push(record);if(qty)logStockMovement(record,qty,"Opening balance");}pendingStockPhoto=null;activeInventoryType=record.type;stopBarcodeScanner();save();closeDialog("stockDialog");renderInventory();notify(old?"Inventory item updated":"Inventory item added");});
+  $("#inventoryList").addEventListener("click",e=>{const b=e.target.closest("[data-stock-action]");if(!b)return;const card=b.closest("[data-stock-id]"),x=state.inventory.find(v=>v.id===card.dataset.stockId);if(!x)return;const a=b.dataset.stockAction;if(a==="sale"){if(Number(x.qty)<=0){notify("No stock available to sell.","error");return;}$("#saleStockId").value=x.id;$("#saleProductName").textContent=`${x.name} · Available: ${qtyText(x.qty,x.unit)} ${x.unit}`;$("#saleQty").max=String(x.qty);$("#saleQty").value="1";$("#salePrice").value=Number(x.sellPrice)||0;updateSalePreview();openDialog("saleDialog");return;}if(a==="edit")openStock(x.id);if(a==="plus"){const step=qtyStep(x.unit);x.qty=cleanQty(Math.min(99999,Number(x.qty)+step),x.unit,0);logStockMovement(x,step,"Manual stock increase");}if(a==="minus"){if(Number(x.qty)>0){const step=qtyStep(x.unit);const delta=Math.min(step,Number(x.qty));x.qty=cleanQty(Math.max(0,Number(x.qty)-step),x.unit,0);logStockMovement(x,-delta,"Manual stock decrease");}}if(a==="plus"||a==="minus"){save();renderInventory();}if(a==="restock"){const existing=state.items.find(i=>i.name.toLowerCase()===x.name.toLowerCase()&&(i.type||"grocery")===(x.type||"grocery")&&!i.done);if(existing){existing.qty+=Math.max(1,Number(x.min)-Number(x.qty));}else state.items.unshift({id:uid(),name:x.name,type:x.type||"grocery",qty:Math.max(1,Number(x.min)-Number(x.qty)),unit:x.unit,category:x.category,priority:"medium",price:0,store:x.store||"",location:x.location||"",notes:"Restock from inventory",done:false,created:Date.now()});activeListType=x.type||"grocery";save();renderAll();navigate("shopping");notify(`Restock item added to ${TYPE_LABELS[activeListType]} list`);}});
+  $("#addStockTop").addEventListener("click",()=>openStock());$$("[data-inventory-type]").forEach(b=>b.addEventListener("click",()=>{activeInventoryType=b.dataset.inventoryType;$("#stockSearch").value="";$("#stockFilter").value="all";renderInventory();}));$("#stockSearch").addEventListener("input",renderInventory);$("#stockFilter").addEventListener("change",renderInventory);
+  $("#reorderQueue").addEventListener("click",e=>{const b=e.target.closest("[data-restock-one]");if(!b)return;const item=state.inventory.find(x=>x.id===b.dataset.restockOne);if(!item)return;const qty=addInventoryRestockToList(item);save();renderAll();notify(`${item.name}: ${qty} ${item.unit||"each"} added to ${TYPE_LABELS[item.type||"grocery"]} list`);});
+  $("#addAllRestock").addEventListener("click",()=>{const low=state.inventory.filter(x=>(x.type||"grocery")===activeInventoryType&&Number(x.qty)<=Number(x.min));if(!low.length){notify("There are no low-stock items to add.");return;}let count=0;low.forEach(x=>{addInventoryRestockToList(x);count++;});save();renderAll();notify(`${count} low-stock products added to their matching lists`);});
+  function renderProcurement(){
+    state.suppliers=Array.isArray(state.suppliers)?state.suppliers:[];
+    state.purchaseOrders=Array.isArray(state.purchaseOrders)?state.purchaseOrders:[];
+    const supplierList=$("#supplierList"),orderList=$("#purchaseOrderList");
+    if(!supplierList||!orderList)return;
+    supplierList.innerHTML=state.suppliers.length?state.suppliers.map(v=>`<article class="history-card supplier-card" data-supplier-id="${esc(v.id)}"><span class="history-icon">🏢</span><div class="history-main"><b>${esc(v.name)}</b><small>${esc(v.contact||"No contact person")}${v.phone?" · "+esc(v.phone):""}${v.email?" · "+esc(v.email):""}${v.location?" · "+esc(v.location):""}</small>${v.notes?`<small>${esc(v.notes)}</small>`:""}</div><div class="history-actions"><button type="button" class="mini-action" data-supplier-action="edit" aria-label="Edit ${esc(v.name)}">✎</button><button type="button" class="mini-action" data-supplier-action="delete" aria-label="Delete ${esc(v.name)}">×</button></div></article>`).join(""):`<div class="empty-state">No suppliers added yet. Add your regular wholesalers, shops and service-material suppliers.</div>`;
+    const orders=[...state.purchaseOrders].sort((a,b)=>Number(b.created||0)-Number(a.created||0));
+    const pending=orders.filter(o=>o.status==="ordered"||o.status==="draft").length;
+    $("#poPendingCount").textContent=pending;$("#poOpenValue").textContent=money(orders.filter(o=>o.status==="ordered"||o.status==="draft").reduce((a,o)=>a+Number(o.qty||0)*Number(o.unitCost||0),0));
+    orderList.innerHTML=orders.length?orders.map(o=>`<article class="history-card po-card ${o.status==="received"?"po-received":""}" data-po-id="${esc(o.id)}"><span class="history-icon">${o.status==="received"?"✓":o.status==="cancelled"?"×":"▤"}</span><div class="history-main"><b>${esc(o.productName)} · ${esc(o.supplierName)}</b><small>${date(o.created)} · ${o.qty} ${esc(o.unit)} × ${money(o.unitCost)} · Total ${money(Number(o.qty)*Number(o.unitCost))}</small><small>Expected: ${o.expectedDate?esc(o.expectedDate):"Not set"} · <strong class="po-status ${esc(o.status)}">${esc(o.status.toUpperCase())}</strong>${o.receivedAt?" · Received "+date(o.receivedAt):""}</small>${o.notes?`<small>${esc(o.notes)}</small>`:""}</div><div class="po-actions">${o.status==="draft"?`<button type="button" class="mini-action" data-po-action="order" aria-label="Mark order as placed">↗</button>`:""}${o.status==="ordered"?`<button type="button" class="mini-action po-receive" data-po-action="receive" aria-label="Receive purchase order">✓</button>`:""}${(o.status==="draft"||o.status==="ordered")?`<button type="button" class="mini-action" data-po-action="cancel" aria-label="Cancel purchase order">×</button>`:""}</div></article>`).join(""):`<div class="empty-state">No purchase orders yet. Create an order to track supplier purchases from placement through receiving.</div>`;
+    state.supplierPrices=Array.isArray(state.supplierPrices)?state.supplierPrices:[];
+    const quoteGroups={};state.supplierPrices.forEach(q=>{const key=String(q.productName||"").trim().toLowerCase();if(!key)return;(quoteGroups[key]??=[]).push(q);});
+    const comparison=$("#supplierPriceComparison");
+    const groupRows=Object.values(quoteGroups).sort((a,b)=>a[0].productName.localeCompare(b[0].productName));
+    comparison.innerHTML=groupRows.length?groupRows.map(group=>{const sorted=[...group].sort((a,b)=>Number(a.unitCost)-Number(b.unitCost));const best=sorted[0];return `<article class="price-compare-card"><div class="price-compare-head"><b>${esc(best.productName)}</b><span class="price-best">LOWEST ${money(best.unitCost)} / ${esc(best.unit||"each")}</span></div>${sorted.map((q,index)=>`<div class="price-compare-row"><span>${esc(q.supplierName)}</span><strong>${money(q.unitCost)} / ${esc(q.unit||"each")}</strong><small>${q.quoteDate?esc(q.quoteDate):date(q.created)}${q.notes?" · "+esc(q.notes):""}</small><button type="button" class="mini-action" data-quote-delete="${esc(q.id)}" aria-label="Delete quote">×</button></div>`).join("")}</article>`;}).join(""):`<div class="empty-state">No supplier quotes recorded. Add at least two quotes for a product to compare supplier costs.</div>`;
+    const quoteSupplier=$("#quoteSupplier");if(quoteSupplier){const old=quoteSupplier.value;quoteSupplier.innerHTML='<option value="">Choose supplier</option>'+state.suppliers.map(v=>`<option value="${esc(v.id)}">${esc(v.name)}</option>`).join("");if(state.suppliers.some(v=>v.id===old))quoteSupplier.value=old;}
+    const supplierSelect=$("#poSupplier");
+    if(supplierSelect){const old=supplierSelect.value;supplierSelect.innerHTML='<option value="">Choose supplier</option>'+state.suppliers.map(v=>`<option value="${esc(v.id)}">${esc(v.name)}</option>`).join("");if(state.suppliers.some(v=>v.id===old))supplierSelect.value=old;}
+  }
+  function renderProductAnalytics(stockItems){
+    const now=Date.now(),since=now-30*86400000;
+    const sales=(state.sales||[]).filter(s=>s.type==="stock"&&!s.reversed&&Number(s.date)>=since);
+    const units=sales.reduce((a,s)=>a+Number(s.qty||0),0),profit=sales.reduce((a,s)=>a+Number(s.profit||0),0);
+    $("#analyticsUnits30").textContent=units.toLocaleString("en-ZA");$("#analyticsProfit30").textContent=money(profit);
+    const rows=stockItems.map(item=>{const sold=sales.filter(s=>s.inventoryId===item.id);const qty=sold.reduce((a,s)=>a+Number(s.qty||0),0);const revenue=sold.reduce((a,s)=>a+Number(s.revenue||0),0);const gross=sold.reduce((a,s)=>a+Number(s.profit||0),0);const daily=qty/30;const cover=daily>0?Number(item.qty||0)/daily:null;const suggested=daily>0?Math.max(0,Math.ceil(daily*30-Number(item.qty||0))):null;return {...item,sold30:qty,revenue30:revenue,profit30:gross,cover,suggested};}).sort((a,b)=>b.profit30-a.profit30||b.sold30-a.sold30);
+    $("#productAnalytics").innerHTML=rows.length?rows.map(x=>`<article class="product-analytics-card"><div class="price-compare-head"><b>${esc(x.name)}</b><strong>${money(x.profit30)} profit</strong></div><div class="analytics-stats"><span>Sold 30d <b>${x.sold30} ${esc(x.unit||"each")}</b></span><span>Revenue <b>${money(x.revenue30)}</b></span><span>Stock cover <b>${x.cover===null?"No sales data":x.cover.toFixed(1)+" days"}</b></span><span>30d reorder estimate <b>${x.suggested===null?"Not available":x.suggested+" units"}</b></span></div></article>`).join(""):`<div class="empty-state">Add business stock products to see performance analytics.</div>`;
+  }
+  function openSupplier(id){const v=state.suppliers.find(x=>x.id===id);$("#supplierEditId").value=v?.id||"";$("#supplierName").value=v?.name||"";$("#supplierContact").value=v?.contact||"";$("#supplierPhone").value=v?.phone||"";$("#supplierEmail").value=v?.email||"";$("#supplierLocation").value=v?.location||"";$("#supplierNotes").value=v?.notes||"";$("#supplierDialogTitle").textContent=v?"Edit supplier":"Add supplier";openDialog("supplierDialog");}
+  function openPurchaseOrder(){if(!state.suppliers.length){notify("Add a supplier before creating a purchase order.","error");openSupplier();return;}$("#poForm").reset();$("#poQty").value="1";$("#poUnitCost").value="0.00";renderProcurement();openDialog("purchaseOrderDialog");}
+  $("#addSupplierBtn").addEventListener("click",()=>openSupplier());
+  $("#supplierForm").addEventListener("submit",e=>{e.preventDefault();const id=$("#supplierEditId").value,name=$("#supplierName").value.trim();if(!name)return;const record={id:id||uid(),name,contact:$("#supplierContact").value.trim(),phone:$("#supplierPhone").value.trim(),email:$("#supplierEmail").value.trim(),location:$("#supplierLocation").value.trim(),notes:$("#supplierNotes").value.trim()};const old=state.suppliers.find(x=>x.id===id);if(old)Object.assign(old,record);else state.suppliers.push(record);save();closeDialog("supplierDialog");renderProcurement();notify(old?"Supplier updated":"Supplier added");});
+  $("#supplierList").addEventListener("click",e=>{const b=e.target.closest("[data-supplier-action]");if(!b)return;const card=b.closest("[data-supplier-id]"),v=state.suppliers.find(x=>x.id===card?.dataset.supplierId);if(!v)return;if(b.dataset.supplierAction==="edit")openSupplier(v.id);if(b.dataset.supplierAction==="delete"){const linked=state.purchaseOrders.some(o=>o.supplierId===v.id);if(linked){notify("This supplier has purchase-order history and cannot be deleted.","error");return;}if(confirm(`Delete supplier ${v.name}?`)){state.suppliers=state.suppliers.filter(x=>x.id!==v.id);save();renderProcurement();notify("Supplier deleted");}}});
+  $("#addSupplierPriceBtn").addEventListener("click",()=>{if(!state.suppliers.length){notify("Add a supplier before recording a quote.","error");openSupplier();return;}$("#supplierPriceForm").reset();$("#quoteDate").value=new Date().toISOString().slice(0,10);renderProcurement();openDialog("supplierPriceDialog");});
+  $("#supplierPriceForm").addEventListener("submit",e=>{e.preventDefault();const supplier=state.suppliers.find(x=>x.id===$("#quoteSupplier").value),productName=$("#quoteProduct").value.trim(),unitCost=Number($("#quoteCost").value);if(!supplier||!productName||!Number.isFinite(unitCost)||unitCost<0){notify("Check the product, supplier and unit cost.","error");return;}state.supplierPrices=Array.isArray(state.supplierPrices)?state.supplierPrices:[];state.supplierPrices.unshift({id:uid(),created:Date.now(),productName,supplierId:supplier.id,supplierName:supplier.name,unitCost,unit:$("#quoteUnit").value,quoteDate:$("#quoteDate").value,notes:$("#quoteNotes").value.trim()});save();closeDialog("supplierPriceDialog");renderProcurement();notify("Supplier quote saved for comparison");});
+  $("#exportSupplierPrices").addEventListener("click",()=>{const rows=[["Product","Supplier","Unit cost","Unit","Quote date","Notes"],...(state.supplierPrices||[]).map(q=>[q.productName,q.supplierName,q.unitCost,q.unit,q.quoteDate,q.notes])];const csv="\uFEFF"+rows.map(r=>r.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\r\n");download("iswappro-supplier-price-comparison.csv",csv,"text/csv;charset=utf-8");notify(`${(state.supplierPrices||[]).length} supplier quotes exported`);});
+  $("#supplierPriceComparison").addEventListener("click",e=>{const b=e.target.closest("[data-quote-delete]");if(!b)return;if(confirm("Delete this supplier quote?")){state.supplierPrices=(state.supplierPrices||[]).filter(q=>q.id!==b.dataset.quoteDelete);save();renderProcurement();notify("Supplier quote deleted");}});
+  $("#createPurchaseOrderBtn").addEventListener("click",openPurchaseOrder);
+  $("#poForm").addEventListener("submit",e=>{e.preventDefault();const supplier=state.suppliers.find(x=>x.id===$("#poSupplier").value),productName=$("#poProduct").value.trim(),qty=Number($("#poQty").value),unitCost=Number($("#poUnitCost").value);if(!supplier||!productName||!Number.isFinite(qty)||qty<=0||!Number.isFinite(unitCost)||unitCost<0){notify("Check the supplier, product, quantity and unit cost.","error");return;}state.purchaseOrders.unshift({id:uid(),created:Date.now(),supplierId:supplier.id,supplierName:supplier.name,productName,qty,unit:$("#poUnit").value,unitCost,expectedDate:$("#poExpectedDate").value,notes:$("#poNotes").value.trim(),status:"draft"});save();closeDialog("purchaseOrderDialog");renderProcurement();notify("Purchase order created as draft");});
+  $("#purchaseOrderList").addEventListener("click",e=>{const b=e.target.closest("[data-po-action]");if(!b)return;const card=b.closest("[data-po-id]"),o=state.purchaseOrders.find(x=>x.id===card?.dataset.poId);if(!o)return;const action=b.dataset.poAction;if(action==="order"){o.status="ordered";o.orderedAt=Date.now();save();renderProcurement();notify("Purchase order marked as placed");}else if(action==="cancel"){if(confirm(`Cancel the purchase order for ${o.productName}?`)){o.status="cancelled";o.cancelledAt=Date.now();save();renderProcurement();notify("Purchase order cancelled");}}else if(action==="receive"){if(!confirm(`Receive ${o.qty} ${o.unit} of ${o.productName} into business stock?`))return;let item=state.inventory.find(x=>(x.type||"grocery")==="stock"&&x.name.trim().toLowerCase()===o.productName.trim().toLowerCase());if(item){const oldQty=Math.max(0,Number(item.qty)||0),oldCost=Math.max(0,Number(item.costPrice)||0),receivedQty=Number(o.qty),receivedCost=Number(o.unitCost);item.qty=oldQty+receivedQty;logStockMovement(item,receivedQty,"Purchase order received",o.supplierName);item.costHistory=Array.isArray(item.costHistory)?item.costHistory:[];item.costHistory.unshift({date:Date.now(),supplierId:o.supplierId,supplierName:o.supplierName,unitCost:receivedCost,qty:receivedQty,reference:o.id});item.costPrice=item.qty>0?((oldQty*oldCost)+(receivedQty*receivedCost))/item.qty:receivedCost;item.store=o.supplierName;}else{item={id:uid(),type:"stock",name:o.productName,qty:Number(o.qty),min:1,unit:o.unit,category:"Other",store:o.supplierName,location:"",costPrice:Number(o.unitCost),sellPrice:0,costHistory:[{date:Date.now(),supplierId:o.supplierId,supplierName:o.supplierName,unitCost:Number(o.unitCost),qty:Number(o.qty),reference:o.id}]};state.inventory.push(item);logStockMovement(item,Number(o.qty),"Purchase order received",o.supplierName);}o.inventoryId=item.id;o.status="received";o.receivedAt=Date.now();save();renderInventory();notify("Purchase order received and business stock updated");}});
+  $("#exportMovements").addEventListener("click",()=>{migrateLegacyInventoryMovements();const records=[...(state.stockMovements||[])].sort((a,b)=>Number(b.date)-Number(a.date));const rows=[["Date","Purpose","Product","Change","Unit","Reason","Reference","Inventory ID"],...records.map(m=>[new Date(m.date).toISOString(),TYPE_LABELS[m.type]||m.type,m.name,m.delta,m.unit,m.reason,m.reference||"",m.inventoryId||""])];const csv="\uFEFF"+rows.map(r=>r.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\r\n");download("iswappro-stock-movements.csv",csv,"text/csv;charset=utf-8");notify(records.length?`${records.length} stock movement records exported`:"No movements exist yet; an empty report was exported.",records.length?"ok":"error");});
+  // V17: supplier quote comparison export, including the quoted supplier and unit.
+  $("#exportPurchaseOrders").addEventListener("click",()=>{const rows=[["Created","Supplier","Product","Quantity","Unit","Unit cost","Order total","Expected date","Status","Notes"],...state.purchaseOrders.map(o=>[new Date(o.created).toISOString(),o.supplierName,o.productName,o.qty,o.unit,o.unitCost,Number(o.qty)*Number(o.unitCost),o.expectedDate,o.status,o.notes])];const csv=rows.map(r=>r.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n");download("iswappro-purchase-orders.csv",csv,"text/csv");});
+  function reverseSale(saleId){
+    const sale=(state.sales||[]).find(x=>x.id===saleId);
+    if(!sale||sale.reversed)return;
+    if(!confirm(`Reverse this sale of ${sale.name}? The sold quantity will be returned to inventory and the sale excluded from revenue/profit totals.`))return;
+    const item=state.inventory.find(x=>x.id===sale.inventoryId);
+    if(item){item.qty=Math.min(999999,Number(item.qty||0)+Number(sale.qty||0));logStockMovement(item,Number(sale.qty||0),"Sale reversed");}
+    sale.reversed=true;sale.reversedAt=Date.now();
+    save();renderInventory();notify(item?"Sale reversed and stock restored":"Sale reversed. Original inventory item was not found.",item?"ok":"error");
+  }
+  $("#salesList").addEventListener("click",e=>{const b=e.target.closest('[data-sale-action="reverse"]');if(!b)return;const card=b.closest("[data-sale-id]");if(card)reverseSale(card.dataset.saleId);});
+  $("#exportSalesCsv").addEventListener("click",()=>{const rows=[["Sale date","Product","Quantity","Unit","Unit selling price","Unit cost","Revenue","Cost of goods sold","Gross profit","Status"],...(state.sales||[]).filter(x=>x.type==="stock").map(x=>[new Date(x.date).toISOString(),x.name,x.qty,x.unit,x.price,x.costPrice,x.revenue,x.cost,x.profit,x.reversed?"Reversed":"Recorded"])];const csv=rows.map(r=>r.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n");download("iswappro-business-sales.csv",csv,"text/csv");});
+  function updateSalePreview(){const x=state.inventory.find(v=>v.id===$("#saleStockId").value);if(!x)return;const qty=Math.max(0,Number($("#saleQty").value)||0),price=Math.max(0,Number($("#salePrice").value)||0),revenue=qty*price,cost=qty*Number(x.costPrice||0);$("#salePreview").textContent=`Sale total: ${money(revenue)} · Estimated gross profit: ${money(revenue-cost)}`;}
+  $("#saleQty").addEventListener("input",updateSalePreview);$("#salePrice").addEventListener("input",updateSalePreview);
+  $("#saleForm").addEventListener("submit",e=>{e.preventDefault();const x=state.inventory.find(v=>v.id===$("#saleStockId").value),qty=Number($("#saleQty").value),price=Number($("#salePrice").value);if(!x||!Number.isFinite(qty)||qty<=0||qty>Number(x.qty)||!Number.isFinite(price)||price<0){notify("Check the sale quantity and selling price. Available stock cannot be exceeded.","error");return;}const revenue=qty*price,cost=qty*Number(x.costPrice||0);x.qty=Math.max(0,Number(x.qty)-qty);logStockMovement(x,-qty,"Sale recorded");x.sellPrice=price;state.sales=Array.isArray(state.sales)?state.sales:[];state.sales.unshift({id:uid(),date:Date.now(),type:"stock",inventoryId:x.id,name:x.name,qty,unit:x.unit,price,costPrice:Number(x.costPrice)||0,revenue,cost,profit:revenue-cost});save();closeDialog("saleDialog");renderInventory();notify(`Sale recorded · Gross profit ${money(revenue-cost)}`);});
+  $("#recordSaleTop").addEventListener("click",()=>{const x=state.inventory.find(v=>(v.type||"grocery")==="stock"&&Number(v.qty)>0);if(!x){notify("Add business stock with available quantity first.");return;}$("#saleStockId").value=x.id;$("#saleProductName").textContent=`${x.name} · Available: ${qtyText(x.qty,x.unit)} ${x.unit}`;$("#saleQty").max=String(x.qty);$("#saleQty").value="1";$("#salePrice").value=Number(x.sellPrice)||0;updateSalePreview();openDialog("saleDialog");});
+  function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+  $("#exportJson").addEventListener("click",()=>download("iswappro-shopping-master-backup.json",JSON.stringify(state,null,2),"application/json"));
+  $("#exportCsv").addEventListener("click",()=>{const rows=[["Name","Purpose","Quantity","Unit","Category","Priority","Purchase unit cost","Line total","Store or supplier","Location","SKU","Planned selling price","Reorder level","Project or job","Service","Collected","Notes"],...state.items.map(i=>[i.name,TYPE_LABELS[i.type||"grocery"],i.qty,i.unit,i.category,i.priority,i.price,i.price*i.qty,i.store,i.location,i.sku,i.sellPrice,i.reorder,i.project,i.service,i.done,i.notes])];const csv=rows.map(r=>r.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n");download("iswappro-shopping-master-list.csv",csv,"text/csv");});
+  $("#importJson").addEventListener("click",()=>$("#importFile").click());
+  $("#importFile").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.items)||!Array.isArray(d.history)||!d.settings||!d.stats)throw Error();if(!confirm("Importing replaces the data in this browser. Continue?"))return;state={...clone(blank),...d,inventory:Array.isArray(d.inventory)?d.inventory:[],sales:Array.isArray(d.sales)?d.sales:[],suppliers:Array.isArray(d.suppliers)?d.suppliers:[],purchaseOrders:Array.isArray(d.purchaseOrders)?d.purchaseOrders:[],supplierPrices:Array.isArray(d.supplierPrices)?d.supplierPrices:[]};save();applyTheme();renderAll();notify("Backup imported successfully");}catch(err){notify("That backup file is invalid.","error");}};r.readAsText(f);e.target.value="";});
+  function settingsOpen(){
+    settingsDraft={...state.settings};
+    $("#currencySelect").value=state.settings.currency||"ZAR";
+    $("#budgetInput").value=state.settings.budget||"";
+    $("#darkMode").checked=!!state.settings.dark;
+    openDialog("settingsDialog");
+  }
+  $("#darkMode").addEventListener("change",e=>{
+    state.settings.dark=e.target.checked;
+    applyTheme();
+  });
+  $("#saveSettings").addEventListener("click",()=>{
+    state.settings.currency=$("#currencySelect").value;
+    state.settings.budget=Math.max(0,Number($("#budgetInput").value)||0);
+    state.settings.dark=$("#darkMode").checked;
+    settingsDraft=null;
+    save();applyTheme();closeDialog("settingsDialog");renderAll();notify("Settings saved");
+  });
+  $("#settingsOpen").addEventListener("click",settingsOpen);
+  $("#themeToggle").addEventListener("click",()=>{state.settings.dark=!state.settings.dark;save();applyTheme();});
+  $("#searchFocus").addEventListener("click",()=>{navigate("shopping");$("#searchInput").focus();});
+  $("#heroAdd").addEventListener("click",()=>openItem());
+  $("#quickNew").addEventListener("click",()=>openItem());
+  $("#quickShop").addEventListener("click",()=>navigate("shopping"));
+  $("#quickCheckout").addEventListener("click",checkout);
+  $("#addItemTop").addEventListener("click",()=>openItem());$("#mobileAdd").addEventListener("click",()=>openItem());
+  $("#goCheckout").addEventListener("click",checkout);
+  $("#setBudget").addEventListener("click",settingsOpen);
+  $("#clearCollected").addEventListener("click",()=>{const scoped=state.items.filter(i=>(i.type||"grocery")===activeListType),n=scoped.filter(i=>i.done).length;if(!n){notify("No collected items in this list.");return;}if(confirm(`Remove ${n} collected ${TYPE_LABELS[activeListType].toLowerCase()} item(s)?`)){const ids=new Set(scoped.filter(i=>i.done).map(i=>i.id));state.items=state.items.filter(i=>!ids.has(i.id));save();renderAll();notify("Collected items removed from this list");}});
+  $$("[data-view]").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.view)));
+  $$("[data-goto]").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.goto)));
+  $$("[data-close]").forEach(b=>b.addEventListener("click",()=>closeDialog(b.dataset.close)));
+  $$("[data-list-type]").forEach(b=>b.addEventListener("click",()=>{activeListType=b.dataset.listType;filters.category="all";$("#categoryFilter").value="all";renderItems();}));
+  $$("[data-report-type]").forEach(b=>b.addEventListener("click",()=>{activeReportType=b.dataset.reportType;renderInsights();}));
+  $("#searchInput").addEventListener("input",e=>{filters.search=e.target.value;renderItems();});
+  $("#categoryFilter").addEventListener("change",e=>{filters.category=e.target.value;renderItems();});
+  $("#statusFilter").addEventListener("change",e=>{filters.status=e.target.value;renderItems();});
+  $("#sortSelect").addEventListener("change",e=>{filters.sort=e.target.value;renderItems();});
+  document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();navigate("shopping");$("#searchInput").focus();}if(e.key==="Escape")$$("dialog[open]").forEach(d=>closeDialog(d.id));});
+  applyTheme();renderAll();
+  if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+})();
+
+</script>
+</body>
+</html>
