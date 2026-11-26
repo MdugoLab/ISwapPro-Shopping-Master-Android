@@ -1,0 +1,18 @@
+STATUS: PHASE 2 PREPARATION COMPLETE — CLOUD BUILD WORKFLOW ADDED
+
+Verified:
+- Source ZIP version is V29.
+- Inline JavaScript syntax check passed.
+- Standalone js/app.js syntax check passed.
+- Original source was copied to this experimental folder; original ZIP untouched.
+- Capacitor package/configuration is present.
+- GitHub Actions workflow added to build a debug APK.
+- Phone-friendly cloud build instructions added.
+
+Not yet completed:
+- Android platform generated (requires Capacitor CLI installation).
+- APK compiled (Android SDK/Gradle not available in this environment).
+- APK installed on device.
+- Camera/barcode/device tests.
+
+Next: upload this experimental project to GitHub, run the Android workflow, download the APK artifact, and test on device.

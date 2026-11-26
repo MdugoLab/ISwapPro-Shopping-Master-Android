@@ -1,0 +1,19 @@
+{
+  "name": "iswappro-shopping-master-v29-android-experiment",
+  "version": "29.0.0",
+  "private": true,
+  "description": "Experimental Capacitor wrapper for ISwapPro Shopping Master V29. Original source preserved.",
+  "scripts": {
+    "android:sync": "npx cap sync android",
+    "android:open": "npx cap open android",
+    "android:run": "npx cap run android",
+    "android:build": "cd android && gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/core": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/android": "^7.0.0"
+  }
+}

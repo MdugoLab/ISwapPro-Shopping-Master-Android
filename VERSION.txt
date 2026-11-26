@@ -1,0 +1,3 @@
+ISwapPro Shopping Master
+Version: V29
+Milestone: Wider camera capture, sub-1x zoom support and improved barcode preview sizing
